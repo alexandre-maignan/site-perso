@@ -1,0 +1,572 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+/*#fdfdf9*/
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+  background-color: white;
+  color: black;
+}
+
+/* Wrapper */
+main.main-wrapper-container {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+
+
+
+.top-bar {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 60px);
+  z-index: 1100;
+  border-bottom: 2.5px solid black;
+  box-sizing: border-box;
+  position: fixed;
+  height: 90px;
+  background-color: white;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.left,
+.right {
+  flex: 1;
+}
+
+
+.left{
+    color: black;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; 
+}
+
+
+/*background-color: #fdfdf9;*/
+
+.navbar {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  text-transform: uppercase;
+  border-bottom: 2.5px solid black;
+  position: fixed;
+  width: calc(100% - 60px);
+  z-index: 1001;
+  top: 90px;                     /* position initiale */
+  height: 70px;    
+  transition: top 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: white;
+}
+
+/* État “caché” : remonte de 90px */
+.navbar.nav-hidden {
+  top: 21.75px;    /* 90px vers le haut par rapport à top:90px */
+}
+
+
+
+
+/* Reste de ton CSS inchangé */
+
+
+/* On répartit les liens sur toute la largeur */
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; /* ✅ Extrêmes touchent les bords */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a {
+  position: relative;
+  display: inline-block;
+  padding-right: 1.8em; /* espace pour le cercle */
+  text-decoration: none;
+  color: black;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1em;
+  height: 1em;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid transparent; /* ← pour éviter un "saut" */
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  background-color: white;
+  border: 2px solid black;
+}
+
+.nav-links li a:focus::after {
+  background-color: black;
+  border: 2px solid black;
+}
+
+
+
+
+
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+    border: 2px solid black;
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.icon:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.section-1{
+  height: 160px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ligne-noire {
+  height: 2px;
+  background-color: black;
+  width: 100%;
+}
+
+
+
+
+/* Barre de séparation */
+.barre-fine {
+  border: none;
+  height: 1.5px;
+  background-color: black;
+}
+
+/* Section générique */
+.content-section {
+  padding: 60px 0;
+}
+
+/* Conteneur en 2 colonnes (texte + image) */
+.content-section .container {
+  display: flex;
+  align-items: flex-start;       /* Aligne en haut */
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Colonne texte */
+.texte {
+  flex: 1;
+}
+
+
+
+
+p {
+  /*text-align: justify;*/
+  margin-top: 0;
+  line-height: 1.5;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+
+
+
+.texte-p {
+  /*text-align: justify;*/
+  margin-top: 0;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.last-p {
+  /*text-align: justify;*/
+  margin-top: 0;
+  line-height: 1.5;
+  margin-bottom: 0rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+
+
+/* Colonne image */
+.image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;     /* Colle à droite */
+}
+
+.image img {
+                  /* Contrôle la hauteur */
+  width: 80%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 3 / 2;
+}
+
+
+
+
+
+
+
+.titre-princ {
+  position: relative;
+  font-size: 3.5rem;
+  margin-bottom: -20px;
+}
+
+.hero-image {
+  width: 100%;      /* l'image prend toute la largeur du container */
+  aspect-ratio: 3 / 1;
+  display: block;   /* supprime l'espace en bas de l'image */
+  object-fit: cover; /* au lieu de cover */
+}
+
+
+
+
+/* Titre stylisé avec point */
+.titre {
+  position: relative;
+  padding-left: 3rem;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+.titre::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1em;
+  height: 1em;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.titre-container {
+  display: flex;
+  justify-content: space-between;
+  
+  margin-bottom: 50px;
+  align-items: flex-start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-en-savoir-plus {
+  display: inline-block;
+  position: relative;
+  width: 220px;
+  height: 45px;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+  
+}
+
+.btn-en-savoir-plus:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.btn-original {
+  transform: translateX(0%);
+}
+
+.btn-hover {
+  transform: translateX(-100%);
+}
+
+.btn-en-savoir-plus:hover .btn-original {
+  transform: translateX(100%);
+}
+
+.btn-en-savoir-plus:hover .btn-hover {
+  transform: translateX(0%);
+}
+
+.arrow-icon {
+  width: 1.5em;
+  height: 1.5em;
+  transition: transform 360ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section-article {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.section-article-track {
+  display: flex;
+  gap: 30px;
+}
+
+.section-article-item {
+  width: calc((100% - 60px) / 3);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-article-image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+
+  object-fit: cover;
+  display: block;
+  padding-bottom: 20px;
+}
+
+.section-article-title {
+  font-size: 1.8rem;
+  color: black;
+  padding-bottom: 15px;
+}
+
+.section-article-text {
+  font-size: 1.1rem;
+  color: black;
+}
+
+
+
+.section-article-title-link {
+  text-decoration: none;
+}
+
+
+.section-article-title-link:hover .section-article-title {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bandeau {
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  text-transform: uppercase;
+  border-bottom: 2.5px solid black;
+  position: sticky;
+  
+  z-index: 1000;
+  top: 90px;                     /* position initiale */
+  height: 70px;    
+  transition: top 600ms cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.bandeau.delay {
+  transition-delay: 0.4s; /* appliqué seulement vers le haut */
+}
+
+
+
+/* On répartit les liens sur toute la largeur */
+.bandeau-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; /* ✅ Extrêmes touchent les bords */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
+.bandeau-links a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.bandeau li a {
+  position: relative;
+  display: inline-block;
+  padding-right: 1.8em; /* espace pour le cercle */
+  text-decoration: none;
+  color: black;
+}
+
+.bandeau li a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1em;
+  height: 1em;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid transparent; /* ← pour éviter un "saut" */
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.bandeau li a:hover::after {
+  background-color: white;
+  border: 2px solid black;
+}
+
+.bandeau li a:focus::after {
+  background-color: black;
+  border: 2px solid black;
+}
+
+.bandeau li a:active::after {
+  background-color: black;
+  border: 2px solid black;
+}
