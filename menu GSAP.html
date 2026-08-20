@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menu GSAP</title>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <style>
+
+        /* ==================================================
+           RESET
+        ================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 90px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            z-index: 1000;
+
+            mix-blend-mode: difference;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+
+        /* ==================================================
+           MENU BUTTON
+        ================================================== */
+
+        .menu-button {
+            width: 45px;
+            height: 45px;
+
+            border: none;
+            background: none;
+
+            cursor: pointer;
+
+            position: relative;
+            z-index: 1100;
+        }
+
+        .menu-line {
+            position: absolute;
+
+            left: 5px;
+
+            width: 35px;
+            height: 1px;
+
+            background: white;
+
+            transform-origin: center;
+        }
+
+        .menu-line:nth-child(1) {
+            top: 17px;
+        }
+
+        .menu-line:nth-child(2) {
+            top: 27px;
+        }
+
+
+        /* ==================================================
+           MENU
+        ================================================== */
+
+        .menu {
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100vh;
+
+            background: #111;
+
+            z-index: 900;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 10vw;
+
+            visibility: hidden;
+        }
+
+
+        /* ==================================================
+           LINKS
+        ================================================== */
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        .menu-link {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: clamp(50px, 8vw, 120px);
+
+            font-weight: 400;
+
+            line-height: 0.95;
+
+            overflow: hidden;
+
+            display: block;
+        }
+
+        .menu-link span {
+            display: block;
+        }
+
+
+        /* ==================================================
+           CONTENU
+        ================================================== */
+
+        main {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: 400;
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .menu {
+                padding-left: 30px;
+            }
+
+            .menu-link {
+                font-size: 55px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVBAR
+    ================================================== -->
+
+    <nav class="navbar">
+
+        <a href="#" class="logo">
+            Σ
+        </a>
+
+        <button
+            class="menu-button"
+            id="menu-button"
+            aria-label="Ouvrir le menu"
+        >
+
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+
+        </button>
+
+    </nav>
+
+
+    <!-- ==================================================
+         MENU
+    ================================================== -->
+
+    <div class="menu" id="menu">
+
+        <nav class="menu-links">
+
+            <a href="#" class="menu-link">
+                <span>Accueil</span>
+            </a>
+
+            <a href="#" class="menu-link">
+                <span>Dessins</span>
+            </a>
+
+            <a href="#" class="menu-link">
+                <span>Sculptures</span>
+            </a>
+
+            <a href="#" class="menu-link">
+                <span>À propos</span>
+            </a>
+
+        </nav>
+
+    </div>
+
+
+    <!-- ==================================================
+         MAIN
+    ================================================== -->
+
+    <main>
+
+        <h1>Portfolio</h1>
+
+    </main>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        /* ==================================================
+           ELEMENTS
+        ================================================== */
+
+        const menuButton = document.getElementById("menu-button");
+        const menu = document.getElementById("menu");
+
+        const menuLines = document.querySelectorAll(".menu-line");
+        const menuLinks = document.querySelectorAll(".menu-link span");
+
+
+        /* ==================================================
+           ETAT
+        ================================================== */
+
+        let menuOpen = false;
+
+
+        /* ==================================================
+           ETAT INITIAL
+        ================================================== */
+
+        gsap.set(menu, {
+            visibility: "hidden"
+        });
+
+        gsap.set(menuLinks, {
+            yPercent: 100
+        });
+
+
+        /* ==================================================
+           TIMELINE
+        ================================================== */
+
+        const menuTimeline = gsap.timeline({
+            paused: true
+        });
+
+
+        /* ==================================================
+           OUVERTURE DU MENU
+        ================================================== */
+
+        menuTimeline
+
+            /* Affichage du panneau */
+            .set(menu, {
+                visibility: "visible"
+            })
+
+            /* Déploiement du menu */
+            .fromTo(
+                menu,
+                {
+                    clipPath: "inset(0 0 100% 0)"
+                },
+                {
+                    clipPath: "inset(0 0 0% 0)",
+                    duration: 1,
+                    ease: "power4.inOut"
+                }
+            )
+
+            /* Apparition des liens */
+            .to(
+                menuLinks,
+                {
+                    yPercent: 0,
+                    duration: 1.1,
+                    ease: "power4.out",
+                    stagger: 0.08
+                },
+                "-=0.55"
+            )
+
+            /* Transformation hamburger → X */
+            .to(
+                menuLines[0],
+                {
+                    y: 5,
+                    rotation: 45,
+                    duration: 0.6,
+                    ease: "power3.inOut"
+                },
+                0
+            )
+
+            .to(
+                menuLines[1],
+                {
+                    y: -5,
+                    rotation: -45,
+                    duration: 0.6,
+                    ease: "power3.inOut"
+                },
+                0
+            );
+
+
+        /* ==================================================
+           BOUTON
+        ================================================== */
+
+        menuButton.addEventListener("click", () => {
+
+            if (!menuOpen) {
+
+                menuOpen = true;
+
+                menuTimeline.play();
+
+                document.body.style.overflow = "hidden";
+
+            } else {
+
+                menuOpen = false;
+
+                menuTimeline.reverse();
+
+                document.body.style.overflow = "";
+
+            }
+
+        });
+
+
+        /* ==================================================
+           LIENS
+        ================================================== */
+
+        menuLinks.forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                menuOpen = false;
+
+                menuTimeline.reverse();
+
+                document.body.style.overflow = "";
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
