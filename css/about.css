@@ -1,0 +1,198 @@
+/* ==================================================
+   ABOUT — PAGE
+================================================== */
+
+.about-page {
+    width: 100%;
+}
+
+
+/* ==================================================
+   INTRODUCTION
+================================================== */
+
+.about-intro {
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 8rem 5vw 6rem;
+}
+
+
+.about-title {
+    margin: 0;
+
+    font-size: clamp(4rem, 10vw, 10rem);
+    font-weight: 400;
+
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+}
+
+
+.about-intro-content {
+    width: min(650px, 80%);
+
+    margin-top: 8rem;
+    margin-left: 25%;
+}
+
+
+.about-lead {
+    margin: 0;
+
+    font-size: clamp(1.3rem, 2vw, 2rem);
+    font-weight: 400;
+
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+}
+
+
+/* ==================================================
+   SECTIONS
+================================================== */
+
+.about-section {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+
+    padding: 8rem 5vw;
+
+    border-top: 1px solid var(--color-border);
+}
+
+
+.about-section-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    color: var(--color-secondary);
+}
+
+
+.about-section-content {
+    width: min(700px, 90%);
+}
+
+
+.about-section-content p {
+    margin: 0 0 2rem;
+
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+}
+
+.about-section-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   INFORMATIONS
+================================================== */
+
+.about-details-list {
+    width: min(700px, 90%);
+}
+
+
+.about-detail {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+
+    padding: 1.2rem 0;
+
+    border-bottom: 1px solid var(--color-border);
+
+    font-size: 1rem;
+}
+
+
+.about-detail:first-child {
+    border-top: 1px solid var(--color-border);
+}
+
+
+.about-detail-label {
+    color: var(--color-secondary);
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 600px) {
+
+    .about-intro {
+        min-height: 75vh;
+
+        padding: 6rem 6vw 4rem;
+    }
+
+
+    .about-title {
+        font-size: clamp(3.5rem, 18vw, 6rem);
+        letter-spacing: -0.07em;
+    }
+
+
+    .about-intro-content {
+        width: 100%;
+
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+
+    .about-lead {
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+
+    .about-section {
+        display: block;
+
+        padding: 5rem 6vw;
+    }
+
+
+    .about-section-label {
+        margin-bottom: 3rem;
+    }
+
+
+    .about-section-content {
+        width: 100%;
+    }
+
+
+    .about-section-content p {
+        font-size: 1.1rem;
+    }
+
+
+    .about-details-list {
+        width: 100%;
+    }
+
+
+    .about-detail {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+
+        padding: 1rem 0;
+    }
+
+}
