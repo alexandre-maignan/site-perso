@@ -82,50 +82,55 @@
          NAVBAR
     ================================================== -->
 
-    <nav class="navbar">
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        <span class="logo-full">
+            Alexandre Maignan
+        </span>
+
+        <span class="logo-mobile">
+            AM
+        </span>
+    </a>
+
+
+    <nav class="navbar-links">
 
         <a
             href="index.html"
-            class="logo"
+            class="page-link"
         >
-            Alexandre Maignan
+            Accueil
         </a>
 
+        <a
+            href="dessins.html"
+            class="page-link"
+        >
+            Dessins
+        </a>
 
-        <nav class="navbar-links">
+        <a
+            href="sculptures.html"
+            class="page-link"
+        >
+            Sculptures
+        </a>
 
-            <a
-                href="index.html"
-                class="page-link"
-            >
-                Accueil
-            </a>
-
-            <a
-                href="index.html"
-                class="page-link"
-            >
-                Dessins
-            </a>
-
-            <a
-                href="index.html"
-                class="page-link"
-            >
-                Sculptures
-            </a>
-
-
-            <a
-                href="about.html"
-                class="page-link"
-            >
-                À propos
-            </a>
-
-        </nav>
+        <a
+            href="a-propos.html"
+            class="page-link"
+        >
+            À propos
+        </a>
 
     </nav>
+
+</header>
 
 
 
@@ -164,37 +169,62 @@
 
 
 
+
+
+
+
+
+
+<section class="content-section">
+
+    <div class="content">
+
+        <div class="content-line"></div>
+
+
+        <p class="intro-text">
+            Je suis Alexandre Maignan. Inspiré par la tradition classique
+            et l’art gréco-romain, je consacre ma pratique à l’étude du
+            corps humain à travers l’anatomie, les proportions, la
+            structure et le volume. La sculpture et le dessin constituent
+            les deux axes principaux de cette recherche.
+        </p>
+
+
+        <a
+            href="a-propos.html"
+            class="main-link"
+        >
+            En savoir plus
+            <span class="main-link-arrow">→</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </main>
 
 
-    <script src="js/transition.js"></script>
 
 
 
 
-     <script>
 
 
-        /* ==================================================
-           NAVBAR
-        ================================================== */
-
-        const navbar =
-            document.querySelector(".navbar");
-
-
-        gsap.set(navbar, {
-
-            mixBlendMode: "difference",
-
-            color: "#ffffff"
-
-        });
-
-
-       
-
-    </script>
 
 
 
@@ -241,10 +271,10 @@
 
 
 
-
+<script src="js/transition.js"></script>
 <script src="js/lenis.min.js"></script>
 <script src="js/smooth-scroll.js"></script>
-
+<script src="js/navbar.js"></script>
 
 
 

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("main");
 
     const links =
-        document.querySelectorAll(".page-link");
+        document.querySelectorAll(".page-link, .main-link");
 
 
     /* ==================================================

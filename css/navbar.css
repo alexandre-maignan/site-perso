@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 1.5rem 3vw;
+    padding: 1.5rem 2vw;
 
     background: transparent;
 
@@ -38,6 +38,11 @@
     letter-spacing: 0.08em;
 
     pointer-events: auto;
+}
+
+
+.logo-mobile {
+    display: none;
 }
 
 
@@ -105,11 +110,11 @@
 @media (max-width: 600px) {
 
     .navbar {
-        padding: 1.25rem 1.5rem;
+        padding: 1.25rem 2vw;
     }
 
     .navbar-links {
-        gap: 1.2rem;
+        gap: 1rem;
     }
 
     .navbar-links a {
@@ -123,21 +128,16 @@
 
     }
 
+    .logo-full {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: inline;
+    }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
