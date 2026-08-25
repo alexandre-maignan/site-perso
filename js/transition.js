@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const links =
         document.querySelectorAll(
-            ".page-link, .main-link"
+            ".page-link, .main-link, .logo"
         );
 
 
@@ -98,17 +98,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 /* ==================================================
-                   ANIMATION DU MAIN
+                   MAIN
                    → démarre immédiatement
+                   → n'empêche PAS la navigation
                 ================================================== */
 
                 gsap.to(main, {
 
-                    y: "-8rem",
+                    y: "-11rem",
 
                     opacity: 0.6,
 
-                    duration: 0.6,
+                    duration: 0.7,
 
                     ease: "pageTransition"
 
@@ -116,8 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 /* ==================================================
-                   ANIMATION DU PANNEAU
-                   → démarre après un délai
+                   PANNEAU
+                   → démarre après 0.25s
+                   → contrôle la navigation
                 ================================================== */
 
                 gsap.to(panel, {
