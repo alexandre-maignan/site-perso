@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     duration: 0.7,
 
-                    delay: 0.3,
+                    delay: 0.25,
 
                     ease: "pageTransition",
 
