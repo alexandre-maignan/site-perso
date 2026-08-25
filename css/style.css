@@ -2,50 +2,128 @@
    RESET
 ================================================== */
 
-*,
-*::before,
-*::after {
+* {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", sans-serif;
 
-    background: #fff;
-    color: #111;
-    letter-spacing: -0.04em;
-}
+    width: 100%;
+    min-height: 100%;
 
-img {
-    display: block;
-    max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-    font: inherit;
 }
 
 
+body {
+
+    background: #ffffff;
+
+    color: #111111;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
 
 
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
 
 
+/* ==================================================
+   NAVBAR
+================================================== */
+
+.navbar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding:
+        25px
+        30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    /*
+       TOUJOURS AU-DESSUS
+    */
+
+    z-index: 2000;
+
+}
 
 
+.logo {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
 
 
+.navbar-links {
+
+    display: flex;
+
+    gap: 35px;
+
+}
 
 
+.navbar-links a {
+
+    font-size: 14px;
+
+    opacity: 0.5;
+
+    transition:
+        opacity 0.3s ease;
+
+}
 
 
+.navbar-links a:hover {
+
+    opacity: 1;
+
+}
+
+
+/* ==================================================
+   MAIN
+================================================== */
+
+main {
+
+    background: #ffffff;
+
+}
 
 
 /* ==================================================
@@ -53,410 +131,119 @@ select {
 ================================================== */
 
 .hero {
-    min-height: 100svh;
+
+    min-height: 100vh;
+
+    padding:
+        150px
+        30px;
 
     display: flex;
-    align-items: flex-end;
-    background-color: black;
 
-    padding: 0 3vw;
-    padding-bottom: 30px;
-}
-
-.hero-content {
-    width: 100%;
-}
-
-.hero-title {
-    margin: 0;
-    color: white;
-
-    font-size: clamp(4rem, 10vw, 10rem);
-    font-weight: 400;
-
-    line-height: 1.2;
-}
-
-.hero-subtitle {
-    margin-top: 1rem;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 500;
-
-}
-
-
-
-
-
-.hero-title-wrapper,
-.hero-subtitle-wrapper {
-    overflow: hidden;
-    display: block;
-}
-
-.hero-title,
-.hero-subtitle {
-    opacity: 0;
-    transform: translateY(100%);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==================================================
-   SECTIONS
-================================================== */
-
-.intro {
-    padding: 4rem 3vw 5rem;
-}
-
-.drawing-section {
-    display: flex;
     flex-direction: column;
 
-    padding: 5rem 3vw 8rem;
-}
-
-
-/* ==================================================
-   SECTION LABEL
-   Élément réutilisable
-================================================== */
-
-.section-label {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    width: 100%;
-
-    margin-bottom: 4rem;
-}
-
-.section-line {
-    display: block;
-
-    width: 100%;
-    height: 1px;
-
-    margin-bottom: 0.9rem;
-
-    background: #111;
-}
-
-.section-eyebrow {
-    font-size: 0.7rem;
-    font-weight: 600;
+    justify-content: center;
 
 }
 
 
-/* ==================================================
-   INTRODUCTION
-================================================== */
+.eyebrow {
 
-.intro-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
+    margin-bottom: 35px;
 
-.intro-text {
+    font-size: 12px;
 
-    margin: 0;
-
-    text-indent: 3rem;
-
-    font-size: 2rem;
-    line-height: 1.65;
-    font-weight: 600;
-
-    color: #333;
-}
-
-
-/* ==================================================
-   SECTION LINKS
-   Élément réutilisable
-================================================== */
-
-.section-link {
-    display: inline-flex;
-    align-items: center;
-
-    width: fit-content;
-
-    gap: 0.6rem;
-
-    margin-top: 4rem;
-
-    color: #111;
-    text-decoration: none;
-
-    font-size: 0.75rem;
-    font-weight: 500;
+    text-transform: uppercase;
 
     letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
 
-@media (max-width: 600px) {
-    .section-link {
-        font-size: 0.65rem;
-    }
+    opacity: 0.45;
+
 }
 
 
+.hero h1 {
 
+    max-width: 1300px;
 
-.section-link span:last-child {
-    font-size: 1rem;
+    font-size:
+        clamp(
+            4rem,
+            11vw,
+            12rem
+        );
 
-    transition: transform 0.3s ease;
-}
-
-.section-link:hover span:last-child {
-    transform: translateX(5px);
-}
-
-
-/* ==================================================
-   INTRODUCTION — LINK
-================================================== */
-
-.intro-content .section-link {
-    align-self: flex-end;
-}
-
-
-/* ==================================================
-   DRAWING — HEADER
-================================================== */
-
-.drawing-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    width: 100%;
-
-    margin-bottom: 30px;
-}
-
-.drawing-title {
-    margin: 0;
-
-    font-size: clamp(3rem, 7vw, 7rem);
     font-weight: 400;
 
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    line-height: 0.84;
+
+    letter-spacing: -0.075em;
+
 }
 
-.drawing-content .section-link {
-    margin-top: 0;
-}
 
+.description {
 
-/* ==================================================
-   DRAWING — LABEL
-================================================== */
+    max-width: 450px;
 
-/* Utilise directement .section-label */
+    margin-top: 55px;
 
+    font-size: 17px;
 
-/* ==================================================
-   DRAWING — GALLERY
-================================================== */
+    line-height: 1.5;
 
-.drawing-gallery {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 2rem;
-
-    width: 100%;
 }
 
 
 /* ==================================================
-   DRAWING — CARD
+   SECOND SECTION
 ================================================== */
 
-.drawing-card {
-    margin: 0;
+.second-section {
+
+    min-height: 80vh;
+
+    padding:
+        100px
+        30px;
+
 }
 
-.drawing-card img {
+
+.second-section span {
+
     display: block;
 
-    width: 100%;
-    height: auto;
+    margin-bottom: 50px;
 
-    aspect-ratio: 3 / 4;
+    font-size: 12px;
 
-    object-fit: cover;
+    opacity: 0.4;
+
 }
 
 
-/* ==================================================
-   DRAWING — CAPTION
-================================================== */
+.second-section h2 {
 
-.drawing-caption {
-    margin-top: 1rem;
-}
+    font-size:
+        clamp(
+            3rem,
+            7vw,
+            8rem
+        );
 
-.drawing-caption h3 {
-    margin: 0;
-
-    font-size: 0.9rem;
-    font-weight: 500;
-
-    line-height: 1.3;
-}
-
-.drawing-caption p {
-    margin: 0.35rem 0 0;
-
-    font-size: 0.7rem;
     font-weight: 400;
 
-    letter-spacing: 0.04em;
+    line-height: 0.88;
 
-    color: #777;
-}
+    letter-spacing: -0.07em;
 
-.drawing-caption p span {
-    margin: 0 0.25rem;
-
-    color: #aaa;
 }
 
 
 /* ==================================================
-   DRAWING — ALL WORKS LINK
+   TRANSITION CONTAINER
 ================================================== */
-
-.drawing-all-link {
-    align-self: flex-end;
-
-    margin-top: 4rem;
-}
-
-
-/* ==================================================
-   MOBILE
-================================================== */
-
-@media (max-width: 600px) {
-
-    /* ----------------------------------------------
-       HERO
-    ---------------------------------------------- */
-
-    .hero {
-        padding: 0 1.5rem;
-        padding-bottom: 30px;
-    }
-
-    .hero-title {
-        font-size: clamp(3.5rem, 17vw, 4rem);
-    }
-
-    .hero-subtitle {
-        margin-top: 1.5rem;
-    }
-
-
-    /* ----------------------------------------------
-       COMMON
-    ---------------------------------------------- */
-
-    .section-label {
-        margin-bottom: 3rem;
-    }
-
-    .section-link {
-        margin-top: 3rem;
-    }
-
-
-    /* ----------------------------------------------
-       INTRODUCTION
-    ---------------------------------------------- */
-
-    .intro {
-        padding: 5rem 1.5rem 7rem;
-    }
-
-    .intro-text {
-        font-size: 1.05rem;
-        line-height: 1.6;
-    }
-
-
-    /* ----------------------------------------------
-       DRAWING
-    ---------------------------------------------- */
-
-    .drawing-section {
-        padding: 4rem 1.5rem 6rem;
-    }
-
-    .drawing-title {
-        font-size: clamp(3rem, 15vw, 5rem);
-    }
-
-    .drawing-content .section-link {
-        margin-top: 0;
-    }
-
-
-    /* ----------------------------------------------
-       DRAWING — GALLERY
-    ---------------------------------------------- */
-
-    .drawing-gallery {
-        grid-template-columns: 1fr;
-
-        gap: 3rem;
-    }
-
-    .drawing-card img {
-        aspect-ratio: 3 / 4;
-    }
-
-    .drawing-all-link {
-        margin-top: 3rem;
-    }
-
-}
-
-
-
-
-
-
-
 
 
 
@@ -484,62 +271,141 @@ select {
 
 
 /* ==================================================
-   IMAGE BANNER
+   TRANSITION
 ================================================== */
 
-.image-banner {
+.page-transition {
+
+    position: fixed;
+
+    inset: 0;
+
     width: 100%;
-    height: 28vw;
+    height: 100%;
 
-    min-height: 220px;
-    max-height: 520px;
+    z-index: 1000;
+
+    pointer-events: none;
 
     overflow: hidden;
 }
 
-.image-banner img {
-    display: block;
+
+.page-transition-panel {
+
+    position: absolute;
+
+    inset: 0;
 
     width: 100%;
-    height: 115%;
+    height: 100%;
 
-    object-fit: cover;
-    object-position: center;
+    background:  #69705A;
 
-    will-change: transform;
+    /*
+       État initial :
+       panneau sous l'écran
+    */
+
+    transform: translateY(100%);
+
 }
+
+
+/* ==================================================
+   ARRIVÉE SUR UNE PAGE
+================================================== */
+
+html.transition-in
+.page-transition-panel {
+
+    /*
+       Le panneau couvre l'écran
+    */
+
+    transform: translateY(0);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ==================================================
    MOBILE
 ================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    .image-banner {
-        height: 45vw;
+    .navbar {
 
-        min-height: 180px;
-        max-height: 280px;
+        padding: 20px;
+
     }
 
-    .image-banner img {
-        height: 125%;
+
+    .navbar-links {
+
+        gap: 20px;
+
+    }
+
+
+    .hero {
+
+        padding:
+            120px
+            20px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                3.5rem,
+                16vw,
+                7rem
+            );
+
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
