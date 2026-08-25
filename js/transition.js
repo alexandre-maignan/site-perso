@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("main");
 
     const links =
-        document.querySelectorAll(".page-link, .main-link");
+        document.querySelectorAll(
+            ".page-link, .main-link"
+        );
 
 
     /* ==================================================
@@ -97,41 +99,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 /* ==================================================
                    ANIMATION DU MAIN
+                   → démarre immédiatement
                 ================================================== */
 
                 gsap.to(main, {
 
                     y: "-8rem",
 
-                    opacity: 0.5,
+                    opacity: 0.6,
 
                     duration: 0.6,
+
+                    ease: "pageTransition"
+
+                });
+
+
+                /* ==================================================
+                   ANIMATION DU PANNEAU
+                   → démarre après un délai
+                ================================================== */
+
+                gsap.to(panel, {
+
+                    y: "0%",
+
+                    duration: 0.7,
+
+                    delay: 0.3,
 
                     ease: "pageTransition",
 
                     onComplete: () => {
 
-
-                        /* ==================================================
-                           ANIMATION DU PANNEAU
-                        ================================================== */
-
-                        gsap.to(panel, {
-
-                            y: "0%",
-
-                            duration: 0.7,
-
-                            ease: "pageTransition",
-
-                            onComplete: () => {
-
-                                window.location.href =
-                                    destination;
-
-                            }
-
-                        });
+                        window.location.href =
+                            destination;
 
                     }
 
