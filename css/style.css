@@ -27,12 +27,10 @@ body {
 
     color: #111111;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: "Inter", sans-serif;
 
     overflow-x: hidden;
+    letter-spacing: -0.04em;
 
 }
 
@@ -46,73 +44,6 @@ a {
 }
 
 
-/* ==================================================
-   NAVBAR
-================================================== */
-
-.navbar {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    padding:
-        25px
-        30px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    /*
-       TOUJOURS AU-DESSUS
-    */
-
-    z-index: 2000;
-
-}
-
-
-.logo {
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-}
-
-
-.navbar-links {
-
-    display: flex;
-
-    gap: 35px;
-
-}
-
-
-.navbar-links a {
-
-    font-size: 14px;
-
-    opacity: 0.5;
-
-    transition:
-        opacity 0.3s ease;
-
-}
-
-
-.navbar-links a:hover {
-
-    opacity: 1;
-
-}
 
 
 /* ==================================================
@@ -126,25 +57,6 @@ main {
 }
 
 
-/* ==================================================
-   HERO
-================================================== */
-
-.hero {
-
-    min-height: 100vh;
-
-    padding:
-        150px
-        30px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-}
 
 
 .eyebrow {
@@ -162,37 +74,8 @@ main {
 }
 
 
-.hero h1 {
-
-    max-width: 1300px;
-
-    font-size:
-        clamp(
-            4rem,
-            11vw,
-            12rem
-        );
-
-    font-weight: 400;
-
-    line-height: 0.84;
-
-    letter-spacing: -0.075em;
-
-}
 
 
-.description {
-
-    max-width: 450px;
-
-    margin-top: 55px;
-
-    font-size: 17px;
-
-    line-height: 1.5;
-
-}
 
 
 /* ==================================================
@@ -371,19 +254,6 @@ html.transition-in
 
 @media (max-width: 700px) {
 
-    .navbar {
-
-        padding: 20px;
-
-    }
-
-
-    .navbar-links {
-
-        gap: 20px;
-
-    }
-
 
     .hero {
 
@@ -427,7 +297,34 @@ html.transition-in
 
 
 
+.page-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+}
 
+.page-transition-panel {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    padding: 3rem;
+
+    background: #0b1f33;
+
+    transform: translateY(100%);
+}
+
+.page-transition-name {
+    font-size: clamp(2rem, 5vw, 8rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    color: white;
+}
 
 
 

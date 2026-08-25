@@ -1,0 +1,54 @@
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    min-height: 100svh;
+
+    display: flex;
+    align-items: flex-end;
+    background-color: black;
+
+    padding: 0 3vw;
+    padding-bottom: 30px;
+}
+
+.hero-content {
+    width: 100%;
+}
+
+.hero-title {
+    margin: 0;
+    color: white;
+
+    font-size: clamp(4rem, 10vw, 10rem);
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    margin-top: 1rem;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+
+}
+
+
+
+
+
+.hero-title-wrapper,
+.hero-subtitle-wrapper {
+    overflow: hidden;
+    display: block;
+}
+
+.hero-title,
+.hero-subtitle {
+    opacity: 0;
+    transform: translateY(100%);
+}

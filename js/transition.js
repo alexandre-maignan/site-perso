@@ -13,6 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ==================================================
+       COURBE DE BÉZIER
+    ================================================== */
+
+    CustomEase.create(
+        "pageTransition",
+        "M0,0 C0.55,0 0.1,1 1,1"
+    );
+
+    /* ==================================================
        ARRIVÉE SUR LA NOUVELLE PAGE
     ================================================== */
 
@@ -24,77 +33,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (transitionIn) {
 
-        /*
-        ==========================================
-        Le panneau est déjà à 100%.
-        On attend que le navigateur ait
-        rendu la page.
-        ==========================================
-        */
-
         requestAnimationFrame(() => {
 
             requestAnimationFrame(() => {
-
-                /*
-                ==========================================
-                1. Apparition du contenu
-                ==========================================
-                */
 
                 main.classList.add(
                     "page-content-visible"
                 );
 
 
-                /*
-                ==========================================
-                2. Le panneau repart vers le haut
-                ==========================================
-                */
+                gsap.to(panel, {
 
-                panel.style.transition =
-                    "transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)";
+                    y: "-100%",
 
-                panel.style.transform =
-                    "translateY(-100%)";
+                    duration: 0.9,
+
+                    ease: "pageTransition",
+
+                    onComplete: () => {
+
+                        gsap.set(panel, {
+                            clearProps: "transform"
+                        });
+
+                        document.documentElement.classList.remove(
+                            "transition-in"
+                        );
+
+                    }
+
+                });
 
             });
 
         });
-
-
-        /*
-        ==========================================
-        Quand le panneau a complètement
-        disparu vers le haut
-        ==========================================
-        */
-
-        panel.addEventListener(
-            "transitionend",
-            event => {
-
-                if (
-                    event.propertyName !==
-                    "transform"
-                ) {
-                    return;
-                }
-
-
-                panel.style.transition = "";
-                panel.style.transform = "";
-
-                document.documentElement.classList.remove(
-                    "transition-in"
-                );
-
-            },
-            {
-                once: true
-            }
-        );
 
     }
 
@@ -113,12 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     link.href;
 
 
-                /*
-                ==========================================
-                Empêche de recharger la page actuelle
-                ==========================================
-                */
-
                 if (
                     destination ===
                     window.location.href
@@ -134,68 +100,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
 
 
-                /*
-                ==========================================
-                Indique à la prochaine page
-                qu'une transition est en cours
-                ==========================================
-                */
-
                 sessionStorage.setItem(
                     "page-transition",
                     "true"
                 );
 
 
-                /*
-                ==========================================
-                PREMIÈRE PARTIE
+                gsap.to(panel, {
 
-                Le panneau est sous l'écran :
+                    y: "0%",
 
-                    100%
+                    duration: 0.9,
 
-                Il monte jusqu'à :
+                    ease: "pageTransition",
 
-                    0%
-
-                ==========================================
-                */
-
-                panel.style.transition =
-                    "transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)";
-
-                panel.style.transform =
-                    "translateY(0)";
-
-
-                /*
-                ==========================================
-                Une fois l'écran complètement couvert,
-                on change de page.
-                ==========================================
-                */
-
-                panel.addEventListener(
-                    "transitionend",
-                    event => {
-
-                        if (
-                            event.propertyName !==
-                            "transform"
-                        ) {
-                            return;
-                        }
-
+                    onComplete: () => {
 
                         window.location.href =
                             destination;
 
-                    },
-                    {
-                        once: true
                     }
-                );
+
+                });
 
             }
         );
