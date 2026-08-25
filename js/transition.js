@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "M0,0 C0.55,0 0.1,1 1,1"
     );
 
+
     /* ==================================================
        ARRIVÉE SUR LA NOUVELLE PAGE
     ================================================== */
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     y: "-100%",
 
-                    duration: 0.9,
+                    duration: 0.7,
 
                     ease: "pageTransition",
 
@@ -85,18 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     link.href;
 
 
-                if (
-                    destination ===
-                    window.location.href
-                ) {
-
-                    event.preventDefault();
-
-                    return;
-
-                }
-
-
                 event.preventDefault();
 
 
@@ -106,18 +95,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-                gsap.to(panel, {
+                /* ==================================================
+                   ANIMATION DU MAIN
+                ================================================== */
 
-                    y: "0%",
+                gsap.to(main, {
 
-                    duration: 0.9,
+                    y: "-8rem",
+
+                    opacity: 0.5,
+
+                    duration: 0.6,
 
                     ease: "pageTransition",
 
                     onComplete: () => {
 
-                        window.location.href =
-                            destination;
+
+                        /* ==================================================
+                           ANIMATION DU PANNEAU
+                        ================================================== */
+
+                        gsap.to(panel, {
+
+                            y: "0%",
+
+                            duration: 0.7,
+
+                            ease: "pageTransition",
+
+                            onComplete: () => {
+
+                                window.location.href =
+                                    destination;
+
+                            }
+
+                        });
 
                     }
 
