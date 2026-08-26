@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 gsap.to(main, {
 
-                    y: "-11rem",
+                    y: "-12rem",
 
                     opacity: 0.6,
 
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     duration: 0.7,
 
-                    delay: 0.25,
+                    delay: 0.28,
 
                     ease: "pageTransition",
 
