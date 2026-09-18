@@ -1,9 +1,86 @@
 /* ==================================================
-   ABOUT — PAGE
+   PAGE À PROPOS
 ================================================== */
 
-.about-page {
+
+/* ==================================================
+   VARIABLES
+================================================== */
+
+:root {
+    --about-text-width: 720px;
+
+    --about-spacing-large: 140px;
+    --about-spacing-medium: 90px;
+
+    --about-eyebrow-color: #888888;
+    --about-text-color: #444444;
+}
+
+
+/* ==================================================
+   SECTION PRINCIPALE
+================================================== */
+
+.about-section {
     width: 100%;
+
+    padding: 180px 3vw 140px;
+}
+
+
+/* ==================================================
+   CONTAINER
+================================================== */
+
+.about-container {
+    width: 100%;
+    max-width: var(--about-max-width);
+
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.about-header {
+    max-width: 850px;
+
+    margin-bottom: var(--about-spacing-large);
+}
+
+
+/* ==================================================
+   PETITS TITRES
+================================================== */
+
+.about-eyebrow {
+    margin: 0 0 18px;
+
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: var(--about-eyebrow-color);
+}
+
+
+/* ==================================================
+   TITRE PRINCIPAL
+================================================== */
+
+.about-header h1 {
+    margin: 0;
+
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 400;
+
+    line-height: 0.95;
+    letter-spacing: -0.04em;
 }
 
 
@@ -12,187 +89,436 @@
 ================================================== */
 
 .about-intro {
-    min-height: 80vh;
+    max-width: 700px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin: 40px 0 0;
 
-    padding: 8rem 5vw 6rem;
-}
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.6;
 
-
-.about-title {
-    margin: 0;
-
-    font-size: clamp(4rem, 10vw, 10rem);
-    font-weight: 400;
-
-    line-height: 0.85;
-    letter-spacing: -0.06em;
-}
-
-
-.about-intro-content {
-    width: min(650px, 80%);
-
-    margin-top: 8rem;
-    margin-left: 25%;
-}
-
-
-.about-lead {
-    margin: 0;
-
-    font-size: clamp(1.3rem, 2vw, 2rem);
-    font-weight: 400;
-
-    line-height: 1.35;
-    letter-spacing: -0.02em;
+    color: var(--about-text-color);
 }
 
 
 /* ==================================================
-   SECTIONS
+   PRÉSENTATION
 ================================================== */
 
-.about-section {
+.about-presentation {
     display: grid;
-    grid-template-columns: 30% 1fr;
 
-    padding: 8rem 5vw;
+    grid-template-columns: 280px minmax(0, 1fr);
 
-    border-top: 1px solid var(--color-border);
+    gap: 70px;
+
+    align-items: center;
+
+    margin-bottom: var(--about-spacing-large);
 }
 
 
-.about-section-label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+/* ==================================================
+   PORTRAIT
+================================================== */
 
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+.about-portrait {
+    width: 100%;
 
-    color: var(--color-secondary);
+    margin: 0;
 }
 
+.about-portrait img {
+    display: block;
 
-.about-section-content {
-    width: min(700px, 90%);
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
 }
 
+.about-portrait figcaption {
+    margin-top: 12px;
 
-.about-section-content p {
-    margin: 0 0 2rem;
-
-    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    font-size: 0.7rem;
     line-height: 1.5;
-    letter-spacing: -0.015em;
+
+    color: var(--about-eyebrow-color);
 }
 
-.about-section-content p:last-child {
+
+/* ==================================================
+   TEXTE DE PRÉSENTATION
+================================================== */
+
+.about-presentation-text {
+    max-width: 620px;
+}
+
+.about-presentation-text p {
+    margin: 0 0 25px;
+
+    font-size: 1rem;
+    line-height: 1.8;
+
+    color: var(--about-text-color);
+}
+
+.about-presentation-text p:last-child {
     margin-bottom: 0;
 }
 
 
 /* ==================================================
-   INFORMATIONS
+   BLOCS DE CONTENU
 ================================================== */
 
-.about-details-list {
-    width: min(700px, 90%);
-}
+.about-block {
+    max-width: var(--about-text-width);
 
-
-.about-detail {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-
-    padding: 1.2rem 0;
-
-    border-bottom: 1px solid var(--color-border);
-
-    font-size: 1rem;
-}
-
-
-.about-detail:first-child {
-    border-top: 1px solid var(--color-border);
-}
-
-
-.about-detail-label {
-    color: var(--color-secondary);
+    margin-bottom: var(--about-spacing-large);
 }
 
 
 /* ==================================================
-   RESPONSIVE
+   TITRES DES BLOCS
 ================================================== */
 
-@media (max-width: 600px) {
+.about-block h2,
+.about-links h2,
+.about-contact h2 {
+    margin: 0 0 35px;
 
-    .about-intro {
-        min-height: 75vh;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
 
-        padding: 6rem 6vw 4rem;
-    }
-
-
-    .about-title {
-        font-size: clamp(3.5rem, 18vw, 6rem);
-        letter-spacing: -0.07em;
-    }
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
 
 
-    .about-intro-content {
-        width: 100%;
+/* ==================================================
+   TEXTE DES BLOCS
+================================================== */
 
-        margin-top: 5rem;
-        margin-left: 0;
-    }
+.about-text {
+    max-width: 680px;
+}
+
+.about-text p {
+    margin: 0 0 25px;
+
+    font-size: 1rem;
+    line-height: 1.8;
+
+    color: var(--about-text-color);
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
 
 
-    .about-lead {
-        font-size: 1.25rem;
-        line-height: 1.4;
-    }
+/* ==================================================
+   TEXTE IMPORTANT
+================================================== */
 
+.about-text strong {
+    font-weight: 500;
+
+    color: #222222;
+}
+
+
+/* ==================================================
+   LIENS VERS LES GALERIES
+================================================== */
+
+.about-links {
+    padding-top: 20px;
+
+    margin-bottom: var(--about-spacing-large);
+
+    border-top: 1px solid #dddddd;
+}
+
+
+/* ==================================================
+   BOUTONS
+================================================== */
+
+.about-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+.about-actions a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 22px;
+
+    border: 1px solid #111111;
+
+    color: #111111;
+    background: transparent;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+}
+
+.about-actions a:hover {
+    background-color: #111111;
+
+    color: #ffffff;
+}
+
+
+/* ==================================================
+   CONTACT
+================================================== */
+
+.about-contact {
+    max-width: var(--about-text-width);
+
+    padding-top: 20px;
+
+    border-top: 1px solid #dddddd;
+}
+
+
+/* ==================================================
+   TEXTE CONTACT
+================================================== */
+
+.about-contact p {
+    max-width: 650px;
+
+    margin: 0 0 30px;
+
+    font-size: 1rem;
+    line-height: 1.8;
+
+    color: var(--about-text-color);
+}
+
+
+/* ==================================================
+   EMAIL
+================================================== */
+
+.about-contact > a {
+    display: inline-block;
+
+    color: #111111;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #111111;
+
+    padding-bottom: 4px;
+
+    transition: opacity 0.3s ease;
+}
+
+.about-contact > a:hover {
+    opacity: 0.55;
+}
+
+
+/* ==================================================
+   TABLETTE
+================================================== */
+
+@media (max-width: 800px) {
 
     .about-section {
-        display: block;
-
-        padding: 5rem 6vw;
+        padding: 140px 30px 100px;
     }
 
 
-    .about-section-label {
-        margin-bottom: 3rem;
+    /* HEADER */
+
+    .about-header {
+        margin-bottom: 100px;
     }
 
 
-    .about-section-content {
-        width: 100%;
+    /* PRÉSENTATION */
+
+    .about-presentation {
+        grid-template-columns: 240px minmax(0, 1fr);
+
+        gap: 45px;
+
+        margin-bottom: 100px;
     }
 
 
-    .about-section-content p {
+    /* BLOCS */
+
+    .about-block {
+        margin-bottom: 100px;
+    }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+    /* --------------------------------------------------
+       SECTION
+    -------------------------------------------------- */
+
+    .about-section {
+        padding: 120px 3vw 80px;
+    }
+
+
+    /* --------------------------------------------------
+       HEADER
+    -------------------------------------------------- */
+
+    .about-header {
+        margin-bottom: 80px;
+    }
+
+
+    .about-eyebrow {
+        margin-bottom: 14px;
+
+        font-size: 0.7rem;
+    }
+
+
+    .about-header h1 {
+        font-size: clamp(2.8rem, 14vw, 4.5rem);
+
+        line-height: 0.95;
+    }
+
+
+    .about-intro {
+        margin-top: 30px;
+
         font-size: 1.1rem;
+
+        line-height: 1.6;
     }
 
 
-    .about-details-list {
+    /* --------------------------------------------------
+       PRÉSENTATION
+    -------------------------------------------------- */
+
+    .about-presentation {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 40px;
+
+        align-items: flex-start;
+
+        margin-bottom: 80px;
+    }
+
+
+    /* --------------------------------------------------
+       PORTRAIT
+    -------------------------------------------------- */
+
+    .about-portrait {
+        width: min(100%, 300px);
+
+        margin: 0 auto;
+    }
+
+
+    .about-portrait figcaption {
+        margin-top: 10px;
+
+        font-size: 0.68rem;
+    }
+
+
+    /* --------------------------------------------------
+       TEXTE DE PRÉSENTATION
+    -------------------------------------------------- */
+
+    .about-presentation-text {
+        max-width: 100%;
+    }
+
+
+    .about-presentation-text p {
+        font-size: 0.95rem;
+
+        line-height: 1.75;
+    }
+
+
+    /* --------------------------------------------------
+       BLOCS
+    -------------------------------------------------- */
+
+    .about-block {
+        margin-bottom: 80px;
+    }
+
+
+    .about-block h2,
+    .about-links h2,
+    .about-contact h2 {
+        margin-bottom: 25px;
+
+        font-size: 2rem;
+
+        line-height: 1.1;
+    }
+
+
+    /* --------------------------------------------------
+       TEXTE
+    -------------------------------------------------- */
+
+    .about-text p,
+    .about-contact p {
+        font-size: 0.95rem;
+
+        line-height: 1.75;
+    }
+
+
+    /* --------------------------------------------------
+       BOUTONS
+    -------------------------------------------------- */
+
+    .about-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .about-actions a {
         width: 100%;
-    }
-
-
-    .about-detail {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-
-        padding: 1rem 0;
     }
 
 }

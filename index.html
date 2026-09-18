@@ -3,37 +3,167 @@
 
 <head>
 
+    <!-- ==================================================
+         META
+    ================================================== -->
+
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Accueil</title>
+    <meta name="description"
+      content="Portfolio d'Alexandre Maignan, sculpteur et dessinateur. Découvrez ses sculptures et dessins inspirés de la tradition académique et de la sculpture classique gréco-romaine, autour de l'étude du corps humain et de l'anatomie.">
 
-    <link
-        rel="stylesheet"
-        href="css/global.css"
-    >
+    <meta name="author"
+          content="Alexandre Maignan">
 
-    <link
-        rel="stylesheet"
-        href="css/navbar.css"
-    >
+    <meta name="theme-color"
+          content="#111111">
 
-    <link
-        rel="stylesheet"
-        href="css/accueil.css"
-    >
-    
-    <!--
-        Ce script est exécuté AVANT l'affichage
-        de la page.
 
-        Il permet de savoir immédiatement
-        si cette page arrive après une transition.
-    -->
+    <!-- ==================================================
+         SEO
+    ================================================== -->
+
+    <link rel="canonical"
+          href="https://alexandre-maignan.github.io/portfolio/">
+
+    <title>Alexandre Maignan – Portfolio</title>
+
+
+    <!-- ==================================================
+         OPEN GRAPH
+         Partage Facebook, WhatsApp, Discord, etc.
+    ================================================== -->
+
+    <meta property="og:title"
+          content="Alexandre Maignan – Portfolio">
+
+    <meta property="og:description"
+      content="Portfolio d'Alexandre Maignan, sculpteur et dessinateur, consacré à l'étude du corps humain et de l'anatomie dans une approche académique inspirée de la sculpture classique gréco-romaine.">
+
+    <meta property="og:site_name"
+          content="Alexandre Maignan">
+
+    <meta property="og:image"
+          content="https://alexandre-maignan.github.io/portfolio/og/og-image.jpg">
+
+    <meta property="og:url"
+          content="https://alexandre-maignan.github.io/portfolio/">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:locale"
+          content="fr_FR">
+
+
+    <!-- ==================================================
+         TWITTER / X
+    ================================================== -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="Alexandre Maignan – Portfolio">
+
+    <meta name="twitter:description"
+      content="Portfolio d'Alexandre Maignan, sculpteur et dessinateur, consacré à l'étude du corps humain et de l'anatomie dans une approche académique inspirée de la sculpture classique gréco-romaine.">
+
+    <meta name="twitter:image"
+          content="https://alexandre-maignan.github.io/portfolio/og/og-image.jpg">
+
+
+    <!-- ==================================================
+         DONNÉES STRUCTURÉES
+         Schema.org
+    ================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+
+        "@graph": [
+
+            {
+                "@type": "WebSite",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#website",
+
+                "name": "Alexandre Maignan",
+
+                "url": "https://alexandre-maignan.github.io/portfolio/",
+
+                "description": "Portfolio d'Alexandre Maignan, sculpteur et dessinateur, consacré à l'étude du corps humain et de l'anatomie dans une approche académique inspirée de la sculpture classique gréco-romaine.",
+
+                "publisher": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#person"
+                }
+            },
+
+
+            {
+                "@type": "WebPage",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#webpage",
+
+                "url": "https://alexandre-maignan.github.io/portfolio/",
+
+                "name": "Alexandre Maignan – Portfolio",
+
+                "description": "Portfolio d'Alexandre Maignan, présentant ses sculptures et dessins consacrés à l'étude du corps humain, de l'anatomie et des volumes dans une approche académique.",
+
+                "isPartOf": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#website"
+                },
+
+                "about": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#person"
+                },
+
+                "mainEntity": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#person"
+                }
+            },
+
+
+            {
+                "@type": "Person",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#person",
+
+                "name": "Alexandre Maignan",
+
+                "url": "https://alexandre-maignan.github.io/portfolio/",
+
+                "image": "https://alexandre-maignan.github.io/portfolio/images/a-propos/alexandre-maignan.jpg",
+
+                "jobTitle": "Sculpteur",
+
+                "description": "Sculpteur et dessinateur travaillant autour de l'étude du corps humain, de l'anatomie, des proportions et des volumes.",
+
+                "knowsAbout": [
+                    "Sculpture",
+                    "Dessin",
+                    "Anatomie artistique",
+                    "Figure humaine",
+                    "Sculpture classique",
+                    "Sculpture gréco-romaine"
+                ],
+
+                "sameAs": [
+                    "https://www.instagram.com/alexandre_maignan/",
+                    "https://fr.pinterest.com/alexandre_maignan/",
+                    "https://www.tiktok.com/@alexandre.maignan",
+                    "https://www.linkedin.com/in/alexandremaignan/",
+                    "https://sketchfab.com/alexandre.maignan",
+                    "https://www.facebook.com/alexandre.maignan.1401/"
+                ]
+            }
+
+        ]
+    }
+    </script>
+
     <script>
 
         if (
@@ -47,23 +177,82 @@
         }
 
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+
+
+    <!-- ==================================================
+         FAVICON
+    ================================================== -->
+
+    <link rel="icon"
+          href="logo/logo.png"
+          type="image/png">
+
+
+    <!-- ==================================================
+         BIBLIOTHÈQUES EXTERNES
+    ================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
 
+    <link
+    rel="preload"
+    as="image"
+    href="images/hero/hero-image.jpg"
+    media="(min-width: 801px)"
+    fetchpriority="high"
+    >
 
+    <link
+        rel="preload"
+        as="image"
+        href="images/hero/hero-image-mobile.jpg"
+        media="(max-width: 800px)"
+        fetchpriority="high"
+    >
 
+    <!-- ==================================================
+         STYLES DU SITE
+    ================================================== -->
+    
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/transition.css">
 
 </head>
+
+
+
+
 
 
 <body>
 
 
-    <!-- ==================================================
-         TRANSITION
-    ================================================== -->
+
+<!-- ==================================================
+     TRANSITION
+================================================== -->
 
 <div class="page-transition">
 
@@ -78,62 +267,69 @@
 </div>
 
 
-    <!-- ==================================================
-         NAVBAR
-    ================================================== -->
 
-<header class="navbar">
+<nav class="navbar navbar-over-hero">
+    
+    <div class="nav-container">
 
-    <a
-        href="index.html"
-        class="logo"
-    >
-        <span class="logo-full">
+        <a href="index.html" class="logo">
             Alexandre Maignan
-        </span>
-
-        <span class="logo-mobile">
-            AM
-        </span>
-    </a>
-
-
-    <nav class="navbar-links">
-
-        <a
-            href="index.html"
-            class="page-link"
-        >
-            Accueil
         </a>
 
-        <a
-            href="dessins.html"
-            class="page-link"
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Ouvrir le menu"
         >
-            Dessins
-        </a>
+            <span class="menu-text">Menu</span>
 
-        <a
-            href="sculptures.html"
-            class="page-link"
-        >
-            Sculptures
-        </a>
+            <span class="menu-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
 
-        <a
-            href="a-propos.html"
-            class="page-link"
-        >
-            À propos
-        </a>
+        <div class="nav-links" id="nav-links">
 
-    </nav>
+            <button
+                class="menu-close"
+                id="menu-close"
+                aria-label="Fermer le menu"
+            >
+                ×
+            </button>
 
-</header>
+            <div class="nav-menu-content">
 
+                <div class="menu-title">
+                    Menu
+                </div>
 
+                <ul>
+                    <li>
+                        <a href="index.html">Accueil</a>
+                    </li>
 
+                    <li>
+                        <a href="dessins.html">Dessins</a>
+                    </li>
+
+                    <li>
+                        <a href="sculptures.html">Sculptures</a>
+                    </li>
+
+                    <li>
+                        <a href="a-propos.html">À propos</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
 
 
 
@@ -145,80 +341,444 @@
     <main>
 
 
+        <!-- ==================================================
+             HERO
+        ================================================== -->
 
-    <header class="hero">
+        <section
+            class="hero"
+            aria-labelledby="hero-title"
+        >
 
-        <div class="hero-content">
+        <picture class="hero-picture">
 
-            <div class="hero-title-wrapper">
-                <h1 class="hero-title">
-                    Alexandre Maignan
-                </h1>
-            </div>
+            <source
+                media="(max-width: 800px)"
+                srcset="images/hero/hero-image-mobile.jpg"
+            >
 
-            <div class="hero-subtitle-wrapper">
-                <p class="hero-subtitle">
+            <img
+                class="hero-image"
+                src="images/hero/hero-image.jpg"
+                alt="Sculpture classique"
+                fetchpriority="high"
+                decoding="async"
+            >
+
+        </picture>
+
+
+            <div
+                class="hero-overlay"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="hero-content">
+
+                <p class="hero-eyebrow">
                     Portfolio
                 </p>
+
+
+                <h1
+                    id="hero-title"
+                    class="hero-title"
+                >
+
+                    <span>Alexandre</span>
+
+                    <span>Maignan</span>
+
+                </h1>
+
             </div>
 
-        </div>
-
-    </header>
+        </section>
 
 
+        <!-- ==================================================
+             INTRO
+        ================================================== -->
 
+<div class="intro-header">
 
+    <div class="intro-line"></div>
 
+    <p class="intro-eyebrow">
+        Portfolio
+    </p>
 
+</div>
 
-
-
-
-<section class="content-section">
-
-    <div class="content">
-
-        <div class="content-line"></div>
-
-
-        <p class="intro-text">
-            Je suis Alexandre Maignan. Inspiré par la tradition classique
-            et l’art gréco-romain, je consacre ma pratique à l’étude du
-            corps humain à travers l’anatomie, les proportions, la
-            structure et le volume. La sculpture et le dessin constituent
-            les deux axes principaux de cette recherche.
-        </p>
-
-
-        <a
-            href="a-propos.html"
-            class="main-link"
+        <section
+            class="intro"
+            id="about"
+            aria-labelledby="intro-title"
         >
-            En savoir plus
-            <span class="main-link-arrow">→</span>
-        </a>
 
-    </div>
-
-</section>
-
-
+            <h2
+                id="intro-title"
+                class="sr-only"
+            >
+                À propos
+            </h2>
 
 
 
 
+            <p class="intro-text">
+
+                Je suis Alexandre Maignan, sculpteur et dessinateur. Je m'intéresse à la sculpture classique et au corps humain, que j'étudie à travers la sculpture et le dessin.
+
+            </p>
 
 
+        </section>
 
 
+        <!-- ==================================================
+             SCULPTURES
+        ================================================== -->
+
+        <section
+            class="gallery"
+            id="sculptures"
+            aria-labelledby="sculptures-title"
+        >
+
+            <div class="gallery-header">
+
+                <h2 id="sculptures-title">
+                    Sculptures
+                </h2>
 
 
+                <a href="sculptures.html">
+                    Tout voir
+                </a>
 
+            </div>
+
+
+            <div class="line"></div>
+
+
+            <div class="gallery-grid">
+
+
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/sculptures/sculpture-11.jpg"
+                            alt="Étude sculpturale d'un torse en plastiline"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="gallery-info">
+
+                        <span>
+                            Étude anatomique - Torse
+                        </span>
+
+                        <span>
+                            Plastiline · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/sculptures/sculpture-12.jpg"
+                            alt="Étude sculpturale d'une bouche en plastiline"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="gallery-info">
+
+                        <span>
+                            Étude anatomique - Bouche
+                        </span>
+
+                        <span>
+                            Plastiline · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             LARGE DRAWING IMAGE
+        ================================================== -->
+
+        <section
+            class="image-section"
+            aria-label="Étude anatomique"
+        >
+
+            <img
+                class="parallax-image"
+                src="images/dessins/dessin-01.jpg"
+                alt="Étude anatomique au graphite"
+                loading="lazy"
+            >
+
+
+            <div class="image-caption">
+                Étude anatomique — 2026
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             DRAWINGS
+        ================================================== -->
+
+        <section
+            class="gallery"
+            id="dessins"
+            aria-labelledby="dessins-title"
+        >
+
+            <div class="gallery-header">
+
+                <h2 id="dessins-title">
+                    Dessins
+                </h2>
+
+
+                <a href="dessins.html">
+                    Tout voir
+                </a>
+
+            </div>
+
+            <div class="line"></div>
+
+
+            <div class="gallery-grid">
+
+
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/dessins/dessin-08.jpg"
+                            alt="Portrait au graphite"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="gallery-info">
+
+                        <span>
+                            Portrait
+                        </span>
+
+                        <span>
+                            Graphite · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/dessins/dessin-01.jpg"
+                            alt="Étude anatomique au graphite"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="gallery-info">
+
+                        <span>
+                            Étude
+                        </span>
+
+                        <span>
+                            Graphite · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
 
     </main>
 
 
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-grid">
+
+            <!-- Sculteia -->
+            <div class="footer-column footer-about">
+
+                <h2>Alexandre Maignan</h2>
+
+                <p>
+                    Alexandre Maignan est sculpteur et dessinateur, inspiré par la sculpture classique et l'étude du corps humain.
+                </p>
+
+            </div>
+
+
+            <!-- Contact -->
+            <div class="footer-column">
+
+                <h3>Contact</h3>
+
+                <a href="mailto:alexandre.maignan.pro@gmail.com">
+                    contact@alexandre-maignan.fr
+                </a>
+
+            </div>
+
+
+            <!-- Navigation -->
+            <div class="footer-column">
+
+                <h3>Navigation</h3>
+
+                <a href="index.html">Accueil</a>
+                <a href="dessins.html">Dessins</a>
+                <a href="sculptures.html">Sculptures</a>
+                <a href="a-propos.html">À propos</a>
+
+            </div>
+
+
+            <!-- Réseaux sociaux -->
+            <div class="footer-column">
+
+                <h3>Réseaux sociaux</h3>
+
+                <div class="social-links">
+
+                    <a href="https://www.instagram.com/alexandre_maignan/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://fr.pinterest.com/alexandre_maignan/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Pinterest">
+                        <i class="fa-brands fa-pinterest-p"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@alexandre.maignan"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/alexandremaignan/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bas du footer -->
+        <div class="footer-bottom">
+
+            <p>
+                © <span id="current-year"></span> Alexandre Maignan. Tous droits réservés.
+            </p>
+
+            <div class="footer-legal">
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="politique-confidentialite.html">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<button id="back-to-top" aria-label="Retour en haut">
+    <i class="fa-solid fa-arrow-up-long"></i>
+</button>
 
 
 
@@ -238,44 +798,237 @@
 
 
 
+
+    <!-- ==================================================
+         SCREEN READER ONLY
+    ================================================== -->
+
+    <style>
+
+        .sr-only {
+            position: absolute;
+
+            width: 1px;
+            height: 1px;
+
+            padding: 0;
+            margin: -1px;
+
+            overflow: hidden;
+
+            clip: rect(0, 0, 0, 0);
+
+            white-space: nowrap;
+
+            border: 0;
+        }
+
+    </style>
+
+
+    <!-- ==================================================
+         GSAP
+    ================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
 
 
 <script>
 
+    gsap.registerPlugin(ScrollTrigger);
+
+
+
     /* ==================================================
-       HERO — TEXT REVEAL
+       HERO IMAGE
     ================================================== */
 
-    const heroTitle = document.querySelector(".hero-title");
-    const heroSubtitle = document.querySelector(".hero-subtitle");
+    gsap.to(".hero-image", {
 
-    const heroTimeline = gsap.timeline();
+        scale: 1,
 
-    heroTimeline
-        .to(heroTitle, {
-            y: 0,
-            opacity: 1,
-            duration: 1.4,
-            ease: "power4.out"
-        })
-        .to(heroSubtitle, {
-            y: 0,
-            opacity: 1,
-            duration: 1.1,
-            ease: "power4.out"
-        }, "-=0.9");
+        duration: 2.2,
+
+        ease: "power3.out"
+
+    });
+
+
+    /* ==================================================
+       HERO TITLE
+    ================================================== */
+
+    gsap.from(".hero-title span", {
+
+        yPercent: 110,
+
+        opacity: 0,
+
+        duration: 1.4,
+
+        stagger: 0.12,
+
+        delay: 0.3,
+
+        ease: "power4.out"
+
+    });
+
+
+    /* ==================================================
+       HERO EYEBROW
+    ================================================== */
+
+    gsap.from(".hero-eyebrow", {
+
+        y: 20,
+
+        opacity: 0,
+
+        duration: 1,
+
+        delay: 0.5,
+
+        ease: "power3.out"
+
+    });
+
+
+    /* ==================================================
+       PARALLAX IMAGES
+    ================================================== */
+
+    document
+        .querySelectorAll(".parallax-image")
+        .forEach(image => {
+
+            gsap.fromTo(
+
+                image,
+
+                {
+                    yPercent: -8
+                },
+
+                {
+                    yPercent: 8,
+
+                    ease: "none",
+
+                    scrollTrigger: {
+
+                        trigger:
+                            image.closest(".image-section"),
+
+                        start: "top bottom",
+
+                        end: "bottom top",
+
+                        scrub: true
+
+                    }
+
+                }
+
+            );
+
+        });
+
+
+
+
+
+
+/* ==================================================
+   HERO PARALLAX
+================================================== */
+
+if (window.matchMedia("(min-width: 701px)").matches) {
+
+    const heroPicture = document.querySelector(".hero-picture");
+
+    if (heroPicture) {
+
+        let ticking = false;
+
+        function updateHeroParallax() {
+
+            const hero = document.querySelector(".hero");
+
+            if (!hero) {
+                return;
+            }
+
+            const rect = hero.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            /*
+             * Progression du hero :
+             * 0 = hero en bas de l'écran
+             * 1 = hero en haut de l'écran
+             */
+
+            const progress =
+                (windowHeight - rect.top) /
+                (windowHeight + rect.height);
+
+            const clampedProgress = Math.max(
+                0,
+                Math.min(1, progress)
+            );
+
+            /*
+             * De -8% à +8%
+             */
+
+            const yPercent =
+                -15 + (clampedProgress * 30);
+
+            heroPicture.style.transform =
+                `translate3d(0, ${yPercent}%, 0)`;
+
+            ticking = false;
+        }
+
+        function requestUpdate() {
+
+            if (!ticking) {
+                requestAnimationFrame(updateHeroParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener(
+            "scroll",
+            requestUpdate,
+            { passive: true }
+        );
+
+        window.addEventListener(
+            "resize",
+            requestUpdate
+        );
+
+        updateHeroParallax();
+    }
+}
+
 
 </script>
 
 
+    <!-- ==================================================
+         LENIS
+    ================================================== -->
 
-
-
-<script src="js/transition.js"></script>
-<script src="js/lenis.min.js"></script>
-<script src="js/smooth-scroll.js"></script>
-<script src="js/navbar.js"></script>
-
+    <script src="js/transition.js"></script>
+    <script src="js/lenis.min.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/back-to-top.js"></script>
+    <script src="js/main.js"></script>
 
 
 

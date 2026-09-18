@@ -8,10 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const main =
         document.querySelector("main");
 
-    const links =
-        document.querySelectorAll(
-            ".page-link, .main-link, .logo"
-        );
+    const links = document.querySelectorAll(
+        'a[href]:not([target="_blank"]):not([href^="mailto:"]):not([href^="#"])'
+    );
 
 
     /* ==================================================

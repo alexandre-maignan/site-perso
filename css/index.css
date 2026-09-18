@@ -1,0 +1,747 @@
+/* ==================================================
+   IMAGES
+================================================== */
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 100svh;
+    min-height: 700px;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 50px 3vw;
+
+    overflow: hidden;
+}
+
+
+.hero-picture {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    overflow: hidden;
+}
+
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: scale(1.08);
+
+    will-change: transform;
+}
+
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.22)
+        );
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 900px;
+    min-width: 0;
+
+    color: var(--color-background);
+}
+
+
+.hero-eyebrow {
+    margin-bottom: 20px;
+
+    font-size: 12px;
+    font-weight: 400;
+
+}
+
+
+.hero-title {
+
+    font-size: clamp(60px, 10vw, 110px);
+    line-height: 0.9;
+    font-weight: 400;
+
+    overflow: hidden;
+    max-width: 100%;
+    padding-bottom: 20px;
+}
+
+
+.hero-title span {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ==================================================
+   INTRO HEADER
+================================================== */
+
+.intro-header {
+    width: 100%;
+
+    margin-top: 50px;
+    padding: 0 3vw;
+}
+
+
+.intro-header .intro-line {
+    width: 100%;
+    height: 1px;
+
+    background: #111;
+}
+
+
+.intro-eyebrow {
+    margin: 14px 0 0;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+/* ==================================================
+   INTRO
+================================================== */
+
+.intro {
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 5vw 3vw;
+
+    background: #f5f5f2;
+
+    overflow: hidden;
+}
+
+
+.intro-text {
+    width: 100%;
+    max-width: 1200px;
+
+    min-width: 0;
+
+    text-indent: 0;
+
+    font-size: clamp(15px, 5vw, 30px);
+    line-height: 1.4;
+    font-weight: 600;
+
+}
+
+
+.intro-line-mask {
+    display: block;
+    overflow: hidden;
+}
+
+
+.intro-line {
+    display: block;
+}
+
+
+/* ==================================================
+   PANNEAU IMAGE SECTION
+================================================== */
+
+.image-section {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 70vh;
+
+    margin: 3vw 0 ;
+
+    overflow: hidden;
+}
+
+
+.image-section img {
+    position: absolute;
+
+    top: -10%;
+    left: 0;
+
+    width: 100%;
+    height: 120%;
+
+    max-width: none;
+
+    object-fit: cover;
+    object-position: center;
+
+    will-change: transform;
+}
+
+
+.image-caption {
+    position: absolute;
+
+    left: 40px;
+    bottom: 40px;
+
+    z-index: 2;
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    text-transform: uppercase;
+}
+
+
+/* ==================================================
+   GALLERY
+================================================== */
+
+.gallery {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 3vw 3vw;
+
+    background: #f5f5f2;
+
+    overflow: hidden;
+
+    margin-top: 0;
+}
+
+
+/* ==================================================
+   GALLERY HEADER
+================================================== */
+
+.gallery-header {
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 2rem;
+
+    min-width: 0;
+}
+
+
+.gallery-header h2 {
+    margin: 0;
+
+    min-width: 0;
+
+    font-size: clamp(50px, 7vw, 70px);
+    font-weight: 500;
+    line-height: 0.95;
+
+    letter-spacing: -0.04em;
+}
+
+
+/* ==================================================
+   TOUT VOIR
+================================================== */
+
+.gallery-header a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+
+    white-space: nowrap;
+
+    transition: opacity 0.3s ease;
+}
+
+
+.gallery-header a::after {
+    content: "→";
+
+    font-size: 15px;
+    line-height: 1;
+
+    transition:
+        transform 0.45s
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.gallery-header a::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 23px;
+    bottom: -7px;
+
+    height: 1px;
+
+    background: #111;
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition:
+        transform 0.45s
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.gallery-header a:hover {
+    opacity: 0.65;
+}
+
+
+.gallery-header a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+.gallery-header a:hover::after {
+    transform: translateX(5px);
+}
+
+
+/* ==================================================
+   GALLERY GRID
+================================================== */
+
+.gallery-grid {
+    width: 100%;
+    max-width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 80px 80px;
+
+    min-width: 0;
+}
+
+
+/* ==================================================
+   GALLERY ITEM
+================================================== */
+
+.gallery-item {
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+}
+
+
+/* ==================================================
+   GALLERY IMAGE
+================================================== */
+
+.gallery-image-wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+
+    overflow: hidden;
+
+    background: #ddd;
+
+    aspect-ratio: 4 / 5;
+}
+
+
+.gallery-image-wrapper img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    object-fit: cover;
+    object-position: center;
+
+    will-change: transform;
+
+    transition:
+        transform 1s
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.gallery-item:hover
+.gallery-image-wrapper img {
+    transform: scale(1.025);
+}
+
+
+/* ==================================================
+   GALLERY INFO
+================================================== */
+
+.gallery-info {
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 15px;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    min-width: 0;
+}
+
+
+.gallery-info span {
+    min-width: 0;
+}
+
+
+.gallery-info span:last-child {
+    opacity: 0.55;
+    text-align: right;
+}
+
+
+
+.line {
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #000;
+    margin-bottom: 2.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+    /* ----------------------------------------------
+       HERO
+    ---------------------------------------------- */
+
+    .hero {
+        width: 100%;
+        max-width: 100%;
+
+        min-height: 600px;
+
+        padding: 25px 3vw;
+
+        overflow: hidden;
+    }
+
+
+    .hero-eyebrow {
+        margin-bottom: 14px;
+
+        font-size: 10px;
+    }
+
+
+    .hero-title {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: clamp(52px, 15vw, 60px);
+
+        letter-spacing: -0.04em;
+    }
+
+
+    /* ----------------------------------------------
+       INTRO
+    ---------------------------------------------- */
+
+    .intro {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 30px 3vw;
+
+        overflow: hidden;
+    }
+
+
+    .intro-text {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 1.2rem;
+
+        line-height: 0.95;
+    }
+
+
+    /* ----------------------------------------------
+       IMAGE
+    ---------------------------------------------- */
+
+    .image-section {
+        width: 100%;
+        max-width: 100%;
+
+        height: 30vh;
+
+        overflow: hidden;
+    }
+
+
+    .image-section img {
+        width: 100%;
+        max-width: none;
+    }
+
+
+    .image-caption {
+        left: 20px;
+        bottom: 20px;
+
+        font-size: 10px;
+    }
+
+
+    /* ----------------------------------------------
+       GALLERY
+    ---------------------------------------------- */
+
+    .gallery {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 3vw 3vw;
+
+        overflow: hidden;
+    }
+
+
+    .gallery-header {
+        width: 100%;
+        max-width: 100%;
+
+        margin-bottom: 1rem;
+
+        gap: 20px;
+
+        min-width: 0;
+    }
+
+
+    .gallery-header h2 {
+        min-width: 0;
+
+        font-size: clamp(30px, 14vw, 40px);
+
+        flex-shrink: 1;
+    }
+
+
+    .gallery-header a {
+        flex-shrink: 0;
+
+        font-size: 9px;
+
+        letter-spacing: 0.1em;
+    }
+
+
+    .gallery-header a::after {
+        font-size: 13px;
+    }
+
+    .line {
+        margin-bottom: 1.5rem;
+    }
+
+
+
+    /* ----------------------------------------------
+       GALLERY GRID
+    ---------------------------------------------- */
+
+    .gallery-grid {
+        width: 100%;
+        max-width: 100%;
+
+        grid-template-columns:
+            minmax(0, 1fr);
+
+        gap: 60px;
+    }
+
+
+    .gallery-item {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        margin-top: 0;
+    }
+
+
+    .gallery-image-wrapper {
+        width: 100%;
+        max-width: 100%;
+
+        aspect-ratio: 4 / 5;
+
+        overflow: hidden;
+    }
+
+
+    .gallery-image-wrapper img {
+        width: 100%;
+        height: 100%;
+
+        max-width: none;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+
+    .gallery-item:nth-child(even) {
+        margin-top: 0;
+    }
+
+
+    .gallery-info {
+        width: 100%;
+        max-width: 100%;
+
+        padding-top: 12px;
+
+        font-size: 10px;
+
+        letter-spacing: 0.07em;
+    }
+
+
+    /* ----------------------------------------------
+       INTRO HEADER
+    ---------------------------------------------- */
+
+    .intro-header {
+        padding: 0 3vw;
+    }
+
+}

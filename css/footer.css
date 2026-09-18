@@ -1,0 +1,383 @@
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    bottom: 0;
+    z-index: 1;
+
+    width: 100%;
+
+
+    color: #f5f5f2;
+    background-color: #3F3E3A;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    position: relative;
+    z-index: 2;
+
+    background: var(--color-background);
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.footer-container {
+    width: 100%;
+    padding: 0 3vw;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   GRILLE
+========================= */
+
+.footer-grid {
+    display: grid;
+
+    width: 100%;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr;
+
+    gap: 80px;
+
+    padding: 120px 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   COLONNES
+========================= */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    min-width: 0;
+}
+
+/* =========================
+   SCULTEIA
+========================= */
+
+.footer-about h2 {
+    margin: 0 0 20px;
+
+    font-size: clamp(24px, 2.2vw, 30px);
+    margin-right: 20px;
+
+
+}
+
+.footer-about p {
+    max-width: 350px;
+
+
+    margin: 0;
+
+    margin-right: 40px;
+    font-size: 15px;
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   TITRES
+========================= */
+
+.footer-column h3 {
+    margin: 0 0 20px;
+
+    font-size: 14px;
+
+    text-transform: uppercase;
+
+
+}
+
+
+/* =========================
+   LIENS
+========================= */
+
+.footer-column a {
+    margin-bottom: 20px;
+
+    color: #f5f5f2;
+    font-size: 15px;
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+
+}
+
+.footer-column a:hover {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   RÉSEAUX SOCIAUX
+========================= */
+
+.social-links {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* =========================
+   CERCLES
+========================= */
+
+.social-links a {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    margin: 0;
+
+    color: #f5f5f2;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    border: 1px solid #f5f5f2;
+}
+
+
+/* =========================
+   ICÔNES
+========================= */
+
+.social-links i {
+    font-size: 17px;
+}
+
+.social-links a:hover {
+    color: white;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   BAS DU FOOTER
+========================= */
+
+.footer-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 25px 0;
+
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #999999;
+
+    font-size: 13px;
+
+
+}
+
+
+/* =========================
+   LIENS LÉGAUX
+========================= */
+
+.footer-legal {
+    display: flex;
+    gap: 0;
+}
+
+.footer-legal a {
+    color: #999999;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+
+}
+
+.footer-legal a:hover {
+    color: white;
+}
+
+
+
+.footer-legal a + a {
+    position: relative;
+
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.footer-legal a + a::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 0.5px;
+    height: 13px;
+
+    background-color: #999999;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PASSAGE EN COLONNE
+================================================== */
+
+@media (max-width: 1000px) {
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 80px;
+
+    padding: 60px 0;
+
+
+}
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+
+    .footer-container {
+        padding: 0 3vw;
+    }
+
+    .footer-grid {
+        gap: 40px 10px;
+        padding: 60px 0;
+    }
+
+    /* Textes du footer */
+    
+    .footer-about h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .footer-about p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-right: 25px;
+    }
+
+    .footer-column h3 {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .footer-column a {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    /* Réseaux sociaux */
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-links a {
+        width: 30px;
+        height: 30px;
+    }
+
+    .social-links i {
+        font-size: 12px;
+    }
+
+    /* Bas du footer */
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px 0;
+    }
+
+    .footer-bottom p,
+    .footer-legal a {
+        font-size: 11px;
+    }
+
+}
