@@ -28,7 +28,7 @@
 
     background-color: var(--color-background);
 
-    border-bottom: 0px solid black;
+    border-bottom: 1px solid #DCDCDC;
 
     z-index: 1000;
 
@@ -45,6 +45,7 @@
 .navbar.navbar-over-hero {
     background-color: transparent;
     box-shadow: none;
+    border-bottom: none;
 }
 
 
@@ -89,7 +90,7 @@
 ================================================== */
 
 .navbar.navbar-hidden {
-    transform: translateY(-100%);
+    transform: translateY(-105%);
 }
 
 
@@ -119,7 +120,6 @@
 
 .logo {
 
-
     line-height: 0.9;
 
     text-decoration: none;
@@ -127,6 +127,8 @@
     color: var(--color-primary);
 
     font-size: 1.5rem;
+
+    font-weight: 500;
 
     transition:
         font-size 0.5s cubic-bezier(.55, 0, .1, 1);

@@ -159,20 +159,6 @@
     }
     </script>
 
-    <script>
-
-        if (
-            sessionStorage.getItem("page-transition") === "true"
-        ) {
-
-            document.documentElement.classList.add(
-                "transition-in"
-            );
-
-        }
-
-    </script>
-
 
     <!-- ==================================================
          FAVICON
@@ -233,27 +219,6 @@
 </head>
 
 <body>
-
-
-
-
-<!-- ==================================================
-     TRANSITION
-================================================== -->
-
-<div class="page-transition">
-
-    <div class="page-transition-panel">
-
-        <span class="page-transition-name">
-            ΑΛΕΞΑΝΔΡΟΣ ΜΑΙΓΝΑΝ
-        </span>
-
-    </div>
-
-</div>
-
-
 
 
 <nav class="navbar">
@@ -866,14 +831,10 @@
     <i class="fa-solid fa-arrow-up-long"></i>
 </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-
 <script src="js/page-load.js"></script>
 <script src="js/dessins.js"></script>
 <script src="js/navbar.js"></script>
-<script src="js/transition.js"></script>
+<script src="js/pagetransition.js"></script>
 <script src="js/back-to-top.js"></script>
 <script src="js/lenis.min.js"></script>
 <script src="js/smooth-scroll.js"></script>

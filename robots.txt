@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
+
+Disallow:
 
 Sitemap: https://alexandre-maignan.github.io/portfolio/sitemap.xml

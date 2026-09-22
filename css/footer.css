@@ -3,6 +3,7 @@
 ========================= */
 
 .footer {
+    position: sticky;
     bottom: 0;
     z-index: 1;
 
@@ -379,5 +380,21 @@ main {
     .footer-legal a {
         font-size: 11px;
     }
+
+}
+
+
+
+
+
+
+
+@media (max-width: 700px) {
+
+    .footer {
+        position: static;
+    }
+
+    /* reste de ton CSS mobile... */
 
 }
