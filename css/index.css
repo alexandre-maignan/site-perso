@@ -623,6 +623,10 @@ img {
         overflow: hidden;
     }
 
+    .hero-scroll {
+        display: none;
+    }
+
 
     .hero-eyebrow {
         margin-bottom: 14px;
