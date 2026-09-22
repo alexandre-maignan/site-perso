@@ -134,7 +134,7 @@ img {
 
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 
     color: var(--color-background);
     text-decoration: none;
@@ -142,7 +142,6 @@ img {
     font-size: 0.75rem;
     font-weight: 400;
 
-    text-transform: uppercase;
     letter-spacing: 0.08em;
 
     transition: opacity 0.3s ease;
@@ -161,6 +160,8 @@ img {
 
     font-size: 0.85rem;
     line-height: 1;
+
+    -webkit-user-select: none;
 
     transition: transform 0.3s ease;
 }
