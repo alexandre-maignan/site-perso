@@ -5,8 +5,10 @@
 img {
     display: block;
     max-width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 }
-
 
 /* ==================================================
    HERO
@@ -239,13 +241,12 @@ img {
 
 .intro-text {
     width: 100%;
-    max-width: 1200px;
 
-    min-width: 0;
+    max-width: 800px;
 
-    text-indent: 0;
+    text-indent: 2rem;
 
-    font-size: clamp(15px, 5vw, 30px);
+    font-size: clamp(15px, 5vw, 24px);
     line-height: 1.4;
     font-weight: 600;
 
