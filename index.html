@@ -200,8 +200,64 @@
 
 
 
+
+<style>
+    /* ==================================================
+       PAGE LOADER
+    ================================================== */
+
+    .page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #111;
+
+        pointer-events: none;
+    }
+
+    .page-loader-content {
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+    }
+
+    /* Si le loader a déjà été affiché dans cette session,
+       il ne doit jamais apparaître visuellement. */
+    html.loader-seen .page-loader {
+        display: none;
+    }
+</style>
+
+<script>
+    if (sessionStorage.getItem("loaderShown")) {
+        document.documentElement.classList.add("loader-seen");
+    }
+</script>
+
+
+
+
+
+
+
+
+
 <body>
 
+<!-- ==================================================
+     PAGE LOADER
+================================================== -->
+
+<div class="page-loader" id="page-loader">
+    <div class="page-loader-content">
+        <span>Alexandre Maignan</span>
+    </div>
+</div>
 
 
 <nav class="navbar navbar-over-hero">
@@ -788,6 +844,56 @@
 <script>
 
     gsap.registerPlugin(ScrollTrigger);
+
+
+
+
+/* ==================================================
+   PAGE LOADER
+================================================== */
+
+const pageLoader = document.querySelector("#page-loader");
+
+if (pageLoader) {
+
+    const loaderShown = sessionStorage.getItem("loaderShown");
+
+    if (loaderShown) {
+
+        // Navigation vers une autre page :
+        // le loader a déjà été masqué AVANT le premier rendu.
+        pageLoader.remove();
+
+    } else {
+
+        // Premier accès
+        sessionStorage.setItem("loaderShown", "true");
+
+        window.addEventListener("load", () => {
+
+            gsap.to(pageLoader, {
+                yPercent: -100,
+                duration: 1.2,
+                ease: "power4.inOut",
+
+                onComplete: () => {
+                    pageLoader.remove();
+                }
+            });
+
+        });
+
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 
