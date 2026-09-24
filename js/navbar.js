@@ -63,3 +63,51 @@ if (menuToggle && menuClose && navLinks) {
 
 
 
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const navbar = document.querySelector(".navbar");
+    const hero = document.querySelector(".hero");
+
+    if (!navbar || !hero) {
+        return;
+    }
+
+    function updateNavbar() {
+
+        const heroRect = hero.getBoundingClientRect();
+
+        navbar.classList.toggle(
+            "navbar-over-hero",
+            heroRect.bottom > 0
+        );
+    }
+
+    updateNavbar();
+
+    window.addEventListener("scroll", updateNavbar, {
+        passive: true
+    });
+
+    window.addEventListener("resize", updateNavbar);
+
+});
+
+
+
+
+
+
+
+
+
+
+
