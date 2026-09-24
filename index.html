@@ -927,7 +927,6 @@
 
     let pageAnimationsStarted = false;
     let heroParallaxInitialized = false;
-
     let progressAnimation = null;
 
 
@@ -948,13 +947,14 @@
 
 
     /*
-     * Animation visuelle du pourcentage.
+     * Commence directement à 40 %.
      *
-     * Elle avance jusqu'à 90 % pendant le chargement.
+     * Le compteur avance ensuite progressivement
+     * jusqu'à 90 % pendant le chargement.
      *
-     * IMPORTANT :
-     * elle ne bloque absolument pas le chargement.
+     * Cela ne bloque pas le chargement réel de la page.
      */
+
     function startLoaderProgress() {
 
         if (!loaderProgress) {
@@ -962,8 +962,10 @@
         }
 
         const progress = {
-            value: 0
+            value: 40
         };
+
+        updateLoaderProgress(40);
 
 
         progressAnimation = gsap.to(
@@ -994,11 +996,12 @@
 
 
     /*
-     * Passage de la progression actuelle à 100 %.
+     * Termine la progression jusqu'à 100 %.
      *
-     * Le loader ne peut pas sortir avant la fin
-     * de cette animation.
+     * Cette fonction est appelée uniquement lorsque
+     * le chargement réel de la page est terminé.
      */
+
     function finishLoaderProgress(onComplete) {
 
         if (!loaderProgress) {
@@ -1011,7 +1014,7 @@
 
 
         /*
-         * Arrête l'animation 0 → 90 %.
+         * Arrête l'animation 40 → 90 %.
          */
 
         if (progressAnimation) {
@@ -1024,13 +1027,13 @@
 
 
         /*
-         * Récupère la valeur affichée actuellement.
+         * Récupère la valeur actuellement affichée.
          */
 
         const currentValue =
             parseFloat(
                 loaderProgress.textContent
-            ) || 0;
+            ) || 40;
 
 
         const progress = {
@@ -1176,7 +1179,6 @@
     ================================================== */
 
     function startPageAnimations() {
-
 
         /*
          * Protection contre un double lancement.
@@ -1384,7 +1386,6 @@
 
     function initHeroParallax() {
 
-
         /*
          * Ne pas initialiser plusieurs fois.
          */
@@ -1522,7 +1523,6 @@
 
     function showPageImmediately() {
 
-
         /*
          * Arrête les animations en cours.
          */
@@ -1636,7 +1636,6 @@
 
     function removeLoader() {
 
-
         if (!pageLoader) {
 
             startPageAnimations();
@@ -1669,7 +1668,6 @@
             gsap.timeline({
 
                 onComplete: () => {
-
 
                     /*
                      * Supprime complètement
@@ -1713,7 +1711,7 @@
 
         /*
          * Les animations de la page commencent
-         * avant que le loader ait complètement disparu.
+         * pendant la sortie du loader.
          */
 
         loaderTimeline.call(
@@ -1739,15 +1737,11 @@
 
     function handlePageLoaded() {
 
-
         /*
          * IMPORTANT :
          *
-         * On ne lance PAS removeLoader()
-         * immédiatement.
-         *
-         * On attend d'abord que le compteur
-         * atteigne réellement 100 %.
+         * On attend d'abord que le compteur atteigne
+         * 100 % avant de commencer à retirer le loader.
          */
 
         finishLoaderProgress(
@@ -1768,7 +1762,6 @@
     ================================================== */
 
     function initializePage() {
-
 
         /*
          * Prépare les animations avant le rendu.
@@ -1804,7 +1797,6 @@
         ================================================== */
 
         if (loaderAlreadyShown) {
-
 
             /*
              * Pas de loader sur les pages suivantes.
@@ -1846,10 +1838,8 @@
 
 
         /*
-         * Commence le compteur.
+         * Commence à 40 %.
          */
-
-        updateLoaderProgress(0);
 
         startLoaderProgress();
 
@@ -1872,9 +1862,8 @@
         /*
          * Attend le chargement complet.
          *
-         * IMPORTANT :
-         * les images loading="lazy" ne sont
-         * toujours PAS forcées à charger.
+         * Les images loading="lazy" ne sont
+         * PAS forcées à charger.
          */
 
         window.addEventListener(
@@ -1893,7 +1882,9 @@
 
 
         /*
-         * Sécurité de 10 secondes.
+         * Sécurité :
+         * le loader ne peut pas rester bloqué
+         * indéfiniment.
          */
 
         window.setTimeout(
@@ -1925,9 +1916,7 @@
 
         event => {
 
-
             if (event.persisted) {
-
 
                 /*
                  * Aucun loader au retour navigateur.
