@@ -55,13 +55,6 @@ html.lenis.lenis-stopped {
 
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/opensans.woff2") format("woff2");
-    font-style: normal;
-    font-weight: 100 200 300 400 500 600 800;
-}
-
-@font-face {
     font-family: "Inter";
     src: url("../fonts/Inter.woff2") format("woff2");
     font-style: normal;

@@ -26,6 +26,8 @@ img {
     display: flex;
     align-items: flex-end;
 
+    background-color: #85827d;
+
     padding: 20px 3vw;
 
     overflow: hidden;
@@ -616,6 +618,8 @@ img {
         min-height: 600px;
 
         padding: 25px 3vw;
+
+        background-color: #a6a79f;
 
         overflow: hidden;
     }
