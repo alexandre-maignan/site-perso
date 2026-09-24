@@ -144,7 +144,6 @@ img {
 
     letter-spacing: 0.08em;
 
-    transition: opacity 0.3s ease;
 }
 
 
@@ -163,7 +162,6 @@ img {
 
     -webkit-user-select: none;
 
-    transition: transform 0.3s ease;
 }
 
 
@@ -314,7 +312,6 @@ img {
     font-size: 12px;
     font-weight: 400;
 
-    text-transform: uppercase;
 }
 
 
@@ -390,7 +387,6 @@ img {
     font-size: 11px;
     font-weight: 500;
 
-    text-transform: uppercase;
 
     white-space: nowrap;
 
@@ -541,7 +537,6 @@ img {
     font-size: 12px;
     font-weight: 400;
 
-    text-transform: uppercase;
     letter-spacing: 0.08em;
 
     min-width: 0;

@@ -1,17 +1,4 @@
 /* ==================================================
-   VARIABLES
-================================================== */
-
-:root {
-    --navbar-entry-duration: var(--main-entry-duration);
-    --navbar-entry-easing: cubic-bezier(0.55, 1, 0.55, 1);
-
-    --navbar-scroll-duration: 0.8s;
-    --navbar-scroll-easing: cubic-bezier(0.55, 0, 0.1, 1);
-}
-
-
-/* ==================================================
    NAVBAR
        background-color: var(--color-background);
 
@@ -31,10 +18,6 @@
     border-bottom: 1px solid #DCDCDC;
 
     z-index: 1000;
-
-    transition:
-        transform var(--navbar-scroll-duration) var(--navbar-scroll-easing),
-        opacity var(--navbar-scroll-duration) var(--navbar-scroll-easing);
 }
 
 
@@ -274,10 +257,6 @@
 
     .navbar {
         height: 70px;
-
-        transition:
-            transform 0.3s ease,
-            opacity var(--navbar-entry-duration) var(--navbar-entry-easing);
     }
 
 
