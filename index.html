@@ -193,18 +193,17 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/components.css">
 
-</head>
-
-
-
 
 
 
 
 <style>
-    /* ==================================================
-       PAGE LOADER
-    ================================================== */
+
+    html,
+    body {
+        margin: 0;
+    }
+
 
     .page-loader {
         position: fixed;
@@ -231,6 +230,26 @@
     html.loader-seen .page-loader {
         display: none;
     }
+
+
+
+    .page-loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    }
+
+    .loader-progress {
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        opacity: 0.7;
+        font-variant-numeric: tabular-nums;
+    }
 </style>
 
 <script>
@@ -239,6 +258,11 @@
     }
 </script>
 
+
+
+
+
+</head>
 
 
 
@@ -254,10 +278,26 @@
 ================================================== -->
 
 <div class="page-loader" id="page-loader">
+
     <div class="page-loader-content">
-        <span>Alexandre Maignan</span>
+
+        <span class="loader-name">
+            Alexandre Maignan
+        </span>
+
+        <span class="loader-progress" id="loader-progress">
+            0%
+        </span>
+
     </div>
+
 </div>
+
+
+
+
+
+
 
 
 <nav class="navbar navbar-over-hero">
@@ -848,6 +888,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 
     gsap.registerPlugin(ScrollTrigger);
@@ -858,17 +912,6 @@
     ================================================== */
 
     const LOADER_DURATION = 1.2;
-
-    /*
-     * Moment où les animations du site commencent
-     * pendant la sortie du loader.
-     *
-     * 0.55 = elles commencent 0.55 s après le début
-     * de la sortie du loader.
-     *
-     * Il reste donc environ 0.65 s de transition
-     * pendant lesquelles les deux animations se chevauchent.
-     */
     const ANIMATION_OVERLAP = 0.4;
 
 
@@ -879,9 +922,161 @@
     const pageLoader =
         document.querySelector("#page-loader");
 
-    let pageAnimationsStarted = false;
+    const loaderProgress =
+        document.querySelector("#loader-progress");
 
+    let pageAnimationsStarted = false;
     let heroParallaxInitialized = false;
+
+    let progressAnimation = null;
+
+
+    /* ==================================================
+       PROGRESSION DU LOADER
+    ================================================== */
+
+    function updateLoaderProgress(value) {
+
+        if (!loaderProgress) {
+            return;
+        }
+
+        loaderProgress.textContent =
+            `${Math.round(value)}%`;
+
+    }
+
+
+    /*
+     * Animation visuelle du pourcentage.
+     *
+     * Elle avance jusqu'à 90 % pendant le chargement.
+     *
+     * IMPORTANT :
+     * elle ne bloque absolument pas le chargement.
+     */
+    function startLoaderProgress() {
+
+        if (!loaderProgress) {
+            return;
+        }
+
+        const progress = {
+            value: 0
+        };
+
+
+        progressAnimation = gsap.to(
+
+            progress,
+
+            {
+
+                value: 90,
+
+                duration: 4,
+
+                ease: "power1.out",
+
+                onUpdate: () => {
+
+                    updateLoaderProgress(
+                        progress.value
+                    );
+
+                }
+
+            }
+
+        );
+
+    }
+
+
+    /*
+     * Passage de la progression actuelle à 100 %.
+     *
+     * Le loader ne peut pas sortir avant la fin
+     * de cette animation.
+     */
+    function finishLoaderProgress(onComplete) {
+
+        if (!loaderProgress) {
+
+            onComplete();
+
+            return;
+
+        }
+
+
+        /*
+         * Arrête l'animation 0 → 90 %.
+         */
+
+        if (progressAnimation) {
+
+            progressAnimation.kill();
+
+            progressAnimation = null;
+
+        }
+
+
+        /*
+         * Récupère la valeur affichée actuellement.
+         */
+
+        const currentValue =
+            parseFloat(
+                loaderProgress.textContent
+            ) || 0;
+
+
+        const progress = {
+
+            value: currentValue
+
+        };
+
+
+        /*
+         * Termine jusqu'à 100 %.
+         */
+
+        gsap.to(
+
+            progress,
+
+            {
+
+                value: 100,
+
+                duration: 0.35,
+
+                ease: "power2.out",
+
+                onUpdate: () => {
+
+                    updateLoaderProgress(
+                        progress.value
+                    );
+
+                },
+
+                onComplete: () => {
+
+                    updateLoaderProgress(100);
+
+                    onComplete();
+
+                }
+
+            }
+
+        );
+
+    }
 
 
     /* ==================================================
@@ -890,69 +1085,107 @@
 
     function setInitialAnimationState() {
 
-        /*
-         * HERO IMAGE
-         */
 
-        gsap.set(".hero-image", {
-            scale: 1.08
-        });
+        /* HERO IMAGE */
 
+        gsap.set(
 
-        /*
-         * TITRE
-         */
+            ".hero-image",
 
-        gsap.set(".hero-title span", {
-            yPercent: 110,
-            opacity: 0
-        });
+            {
+
+                scale: 1.08
+
+            }
+
+        );
 
 
-        /*
-         * NAVBAR
-         */
+        /* TITRE */
 
-        gsap.set(".navbar", {
-            y: -100,
-            opacity: 0
-        });
+        gsap.set(
 
+            ".hero-title span",
 
-        /*
-         * BOUTON SCROLL
-         */
+            {
 
-        gsap.set(".hero-scroll", {
-            y: 0,
-            opacity: 0
-        });
+                yPercent: 110,
+
+                opacity: 0
+
+            }
+
+        );
 
 
-        /*
-         * EYEBROW
-         */
+        /* NAVBAR */
 
-        gsap.set(".hero-eyebrow", {
-            y: 20,
-            opacity: 0
-        });
+        gsap.set(
+
+            ".navbar",
+
+            {
+
+                y: -100,
+
+                opacity: 0
+
+            }
+
+        );
+
+
+        /* BOUTON SCROLL */
+
+        gsap.set(
+
+            ".hero-scroll",
+
+            {
+
+                y: 0,
+
+                opacity: 0
+
+            }
+
+        );
+
+
+        /* EYEBROW */
+
+        gsap.set(
+
+            ".hero-eyebrow",
+
+            {
+
+                y: 20,
+
+                opacity: 0
+
+            }
+
+        );
 
     }
 
 
     /* ==================================================
-       ANIMATIONS D'ENTRÉE
+       ANIMATIONS DE LA PAGE
     ================================================== */
 
     function startPageAnimations() {
+
 
         /*
          * Protection contre un double lancement.
          */
 
         if (pageAnimationsStarted) {
+
             return;
+
         }
 
         pageAnimationsStarted = true;
@@ -962,93 +1195,123 @@
            HERO IMAGE
         ================================================== */
 
-        gsap.to(".hero-image", {
+        gsap.to(
 
-            scale: 1,
+            ".hero-image",
 
-            duration: 2.2,
+            {
 
-            ease: "power3.out"
+                scale: 1,
 
-        });
+                duration: 2.2,
+
+                ease: "power3.out"
+
+            }
+
+        );
 
 
         /* ==================================================
            HERO TITLE
         ================================================== */
 
-        gsap.to(".hero-title span", {
+        gsap.to(
 
-            yPercent: 0,
+            ".hero-title span",
 
-            opacity: 1,
+            {
 
-            duration: 1.4,
+                yPercent: 0,
 
-            stagger: 0.12,
+                opacity: 1,
 
-            delay: 0.3,
+                duration: 1.4,
 
-            ease: "power4.out"
+                stagger: 0.12,
 
-        });
+                delay: 0.3,
+
+                ease: "power4.out"
+
+            }
+
+        );
 
 
         /* ==================================================
            NAVBAR
         ================================================== */
 
-        gsap.to(".navbar", {
+        gsap.to(
 
-            y: 0,
+            ".navbar",
 
-            opacity: 1,
+            {
 
-            duration: 1.2,
+                y: 0,
 
-            delay: 0.1,
+                opacity: 1,
 
-            ease: "power3.out"
+                duration: 1.2,
 
-        });
+                delay: 0.1,
+
+                ease: "power3.out"
+
+            }
+
+        );
 
 
         /* ==================================================
            HERO SCROLL
         ================================================== */
 
-        gsap.to(".hero-scroll", {
+        gsap.to(
 
-            y: 0,
+            ".hero-scroll",
 
-            opacity: 1,
+            {
 
-            duration: 0.5,
+                y: 0,
 
-            delay: 0.5,
+                opacity: 1,
 
-            ease: "power3.out"
+                duration: 0.5,
 
-        });
+                delay: 0.5,
+
+                ease: "power3.out"
+
+            }
+
+        );
 
 
         /* ==================================================
            HERO EYEBROW
         ================================================== */
 
-        gsap.to(".hero-eyebrow", {
+        gsap.to(
 
-            y: 0,
+            ".hero-eyebrow",
 
-            opacity: 1,
+            {
 
-            duration: 1,
+                y: 0,
 
-            delay: 0.5,
+                opacity: 1,
 
-            ease: "power3.out"
+                duration: 1,
 
-        });
+                delay: 0.5,
+
+                ease: "power3.out"
+
+            }
+
+        );
 
 
         /* ==================================================
@@ -1064,10 +1327,13 @@
                     image,
 
                     {
+
                         yPercent: -8
+
                     },
 
                     {
+
                         yPercent: 8,
 
                         ease: "none",
@@ -1100,8 +1366,7 @@
 
 
         /*
-         * Laisse le navigateur terminer son premier rendu
-         * avant de recalculer ScrollTrigger.
+         * Recalcul du layout après le premier rendu.
          */
 
         requestAnimationFrame(() => {
@@ -1119,12 +1384,15 @@
 
     function initHeroParallax() {
 
+
         /*
          * Ne pas initialiser plusieurs fois.
          */
 
         if (heroParallaxInitialized) {
+
             return;
+
         }
 
 
@@ -1137,20 +1405,23 @@
                 "(min-width: 701px)"
             ).matches
         ) {
+
             return;
+
         }
 
 
         const heroPicture =
             document.querySelector(".hero-picture");
 
-
         const hero =
             document.querySelector(".hero");
 
 
         if (!heroPicture || !hero) {
+
             return;
+
         }
 
 
@@ -1165,17 +1436,9 @@
             const rect =
                 hero.getBoundingClientRect();
 
-
             const windowHeight =
                 window.innerHeight;
 
-
-            /*
-             * Progression du hero :
-             *
-             * 0 = hero en bas
-             * 1 = hero en haut
-             */
 
             const progress =
                 (windowHeight - rect.top) /
@@ -1189,12 +1452,9 @@
                 );
 
 
-            /*
-             * De -15% à +15%.
-             */
-
             const yPercent =
-                -15 + (clampedProgress * 30);
+                -15 +
+                (clampedProgress * 30);
 
 
             heroPicture.style.transform =
@@ -1209,7 +1469,9 @@
         function requestHeroParallaxUpdate() {
 
             if (ticking) {
+
                 return;
+
             }
 
 
@@ -1224,15 +1486,26 @@
 
 
         window.addEventListener(
+
             "scroll",
+
             requestHeroParallaxUpdate,
-            { passive: true }
+
+            {
+
+                passive: true
+
+            }
+
         );
 
 
         window.addEventListener(
+
             "resize",
+
             requestHeroParallaxUpdate
+
         );
 
 
@@ -1242,63 +1515,115 @@
 
 
     /* ==================================================
-       RENDU IMMÉDIAT
+       AFFICHAGE IMMÉDIAT
        
-       Utilisé notamment lors d'un retour navigateur
-       via bfcache.
+       Utilisé notamment avec le bfcache.
     ================================================== */
 
     function showPageImmediately() {
 
+
         /*
-         * Arrête toutes les animations GSAP en cours.
+         * Arrête les animations en cours.
          */
 
         gsap.killTweensOf([
+
             ".hero-image",
+
             ".hero-title span",
+
             ".navbar",
+
             ".hero-scroll",
+
             ".hero-eyebrow"
+
         ]);
 
 
-        /*
-         * Remet tous les éléments dans leur état final.
-         */
+        /* HERO */
 
-        gsap.set(".hero-image", {
-            scale: 1
-        });
+        gsap.set(
 
+            ".hero-image",
 
-        gsap.set(".hero-title span", {
-            yPercent: 0,
-            opacity: 1
-        });
+            {
 
+                scale: 1
 
-        gsap.set(".navbar", {
-            y: 0,
-            opacity: 1
-        });
+            }
+
+        );
 
 
-        gsap.set(".hero-scroll", {
-            y: 0,
-            opacity: 1
-        });
+        /* TITRE */
+
+        gsap.set(
+
+            ".hero-title span",
+
+            {
+
+                yPercent: 0,
+
+                opacity: 1
+
+            }
+
+        );
 
 
-        gsap.set(".hero-eyebrow", {
-            y: 0,
-            opacity: 1
-        });
+        /* NAVBAR */
+
+        gsap.set(
+
+            ".navbar",
+
+            {
+
+                y: 0,
+
+                opacity: 1
+
+            }
+
+        );
 
 
-        /*
-         * Recalcule les positions.
-         */
+        /* SCROLL */
+
+        gsap.set(
+
+            ".hero-scroll",
+
+            {
+
+                y: 0,
+
+                opacity: 1
+
+            }
+
+        );
+
+
+        /* EYEBROW */
+
+        gsap.set(
+
+            ".hero-eyebrow",
+
+            {
+
+                y: 0,
+
+                opacity: 1
+
+            }
+
+        );
+
 
         ScrollTrigger.refresh();
 
@@ -1311,6 +1636,7 @@
 
     function removeLoader() {
 
+
         if (!pageLoader) {
 
             startPageAnimations();
@@ -1321,12 +1647,12 @@
 
 
         /*
-         * Sécurité :
-         * si le loader n'est plus dans le DOM,
-         * on lance directement les animations.
+         * Sécurité.
          */
 
-        if (!document.body.contains(pageLoader)) {
+        if (
+            !document.body.contains(pageLoader)
+        ) {
 
             startPageAnimations();
 
@@ -1336,8 +1662,7 @@
 
 
         /*
-         * Timeline permettant de faire chevaucher
-         * la sortie du loader et les animations du site.
+         * Timeline de sortie.
          */
 
         const loaderTimeline =
@@ -1345,8 +1670,10 @@
 
                 onComplete: () => {
 
+
                     /*
-                     * Suppression complète du loader.
+                     * Supprime complètement
+                     * le loader du DOM.
                      */
 
                     if (
@@ -1364,11 +1691,13 @@
 
 
         /*
-         * SORTIE DU LOADER
+         * Le loader monte.
          */
 
         loaderTimeline.to(
+
             pageLoader,
+
             {
 
                 yPercent: -100,
@@ -1378,49 +1707,58 @@
                 ease: "power4.inOut"
 
             }
+
         );
 
 
         /*
-         * ANIMATIONS DU SITE
-         *
-         * Elles commencent AVANT que le loader
-         * ait complètement disparu.
+         * Les animations de la page commencent
+         * avant que le loader ait complètement disparu.
          */
 
         loaderTimeline.call(
+
             () => {
 
                 startPageAnimations();
 
             },
+
             null,
+
             ANIMATION_OVERLAP
+
         );
 
     }
 
 
     /* ==================================================
-       PAGE COMPLÈTEMENT CHARGÉE
+       PAGE CHARGÉE
     ================================================== */
 
     function handlePageLoaded() {
 
+
         /*
-         * Premier accès :
-         * le loader doit sortir.
+         * IMPORTANT :
+         *
+         * On ne lance PAS removeLoader()
+         * immédiatement.
+         *
+         * On attend d'abord que le compteur
+         * atteigne réellement 100 %.
          */
 
-        if (pageLoader) {
+        finishLoaderProgress(
 
-            removeLoader();
+            () => {
 
-        } else {
+                removeLoader();
 
-            startPageAnimations();
+            }
 
-        }
+        );
 
     }
 
@@ -1431,15 +1769,17 @@
 
     function initializePage() {
 
+
         /*
-         * Prépare les éléments avant toute animation.
+         * Prépare les animations avant le rendu.
          */
 
         setInitialAnimationState();
 
 
         /*
-         * Vérifie si le loader a déjà été affiché.
+         * Vérifie si le loader a déjà été affiché
+         * pendant cette session.
          */
 
         let loaderAlreadyShown = false;
@@ -1454,11 +1794,6 @@
 
         } catch (error) {
 
-            /*
-             * Si sessionStorage est indisponible,
-             * on utilise le loader normalement.
-             */
-
             loaderAlreadyShown = false;
 
         }
@@ -1470,18 +1805,17 @@
 
         if (loaderAlreadyShown) {
 
+
             /*
-             * Pas de loader.
+             * Pas de loader sur les pages suivantes.
              */
 
             if (pageLoader) {
+
                 pageLoader.remove();
+
             }
 
-
-            /*
-             * Animations normales.
-             */
 
             startPageAnimations();
 
@@ -1512,7 +1846,16 @@
 
 
         /*
-         * Si toutes les ressources sont déjà chargées.
+         * Commence le compteur.
+         */
+
+        updateLoaderProgress(0);
+
+        startLoaderProgress();
+
+
+        /*
+         * Si la page est déjà complètement chargée.
          */
 
         if (
@@ -1527,81 +1870,82 @@
 
 
         /*
-         * Sinon, attendre le chargement complet.
+         * Attend le chargement complet.
+         *
+         * IMPORTANT :
+         * les images loading="lazy" ne sont
+         * toujours PAS forcées à charger.
          */
 
         window.addEventListener(
+
             "load",
+
             handlePageLoaded,
+
             {
+
                 once: true
+
             }
+
         );
 
 
         /*
-         * Sécurité :
-         * on ne laisse jamais le loader bloqué
-         * indéfiniment à cause d'une ressource.
+         * Sécurité de 10 secondes.
          */
 
-        window.setTimeout(() => {
+        window.setTimeout(
 
-            if (!pageAnimationsStarted) {
+            () => {
 
-                handlePageLoaded();
+                if (!pageAnimationsStarted) {
 
-            }
+                    handlePageLoaded();
 
-        }, 10000);
+                }
+
+            },
+
+            10000
+
+        );
 
     }
 
 
     /* ==================================================
-       GESTION DU BFCACHE
-    ==================================================
-
-       Quand l'utilisateur fait :
-
-       page A
-          ↓
-       page B
-          ↓
-       bouton "retour"
-
-       le navigateur peut restaurer directement
-       l'ancienne page au lieu de la recharger.
-
-       Dans ce cas, on force un état final propre.
+       BFCACHE
     ================================================== */
 
     window.addEventListener(
+
         "pageshow",
+
         event => {
+
 
             if (event.persisted) {
 
+
                 /*
-                 * La page revient du bfcache.
-                 * Aucun loader ne doit apparaître.
+                 * Aucun loader au retour navigateur.
                  */
 
                 if (pageLoader) {
+
                     pageLoader.remove();
+
                 }
 
-
-                /*
-                 * On remet immédiatement
-                 * tous les éléments visibles.
-                 */
 
                 showPageImmediately();
 
             }
 
         }
+
     );
 
 
@@ -1614,11 +1958,17 @@
     ) {
 
         document.addEventListener(
+
             "DOMContentLoaded",
+
             initializePage,
+
             {
+
                 once: true
+
             }
+
         );
 
     } else {
@@ -1642,129 +1992,12 @@
 
 
 
-<script>
-
-    /* ==================================================
-       PARALLAX IMAGES
-    ================================================== */
-
-    document
-        .querySelectorAll(".parallax-image")
-        .forEach(image => {
-
-            gsap.fromTo(
-
-                image,
-
-                {
-                    yPercent: -8
-                },
-
-                {
-                    yPercent: 8,
-
-                    ease: "none",
-
-                    scrollTrigger: {
-
-                        trigger:
-                            image.closest(".image-section"),
-
-                        start: "top bottom",
-
-                        end: "bottom top",
-
-                        scrub: true
-
-                    }
-
-                }
-
-            );
-
-        });
 
 
 
 
 
 
-/* ==================================================
-   HERO PARALLAX
-================================================== */
-
-if (window.matchMedia("(min-width: 701px)").matches) {
-
-    const heroPicture = document.querySelector(".hero-picture");
-
-    if (heroPicture) {
-
-        let ticking = false;
-
-        function updateHeroParallax() {
-
-            const hero = document.querySelector(".hero");
-
-            if (!hero) {
-                return;
-            }
-
-            const rect = hero.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            /*
-             * Progression du hero :
-             * 0 = hero en bas de l'écran
-             * 1 = hero en haut de l'écran
-             */
-
-            const progress =
-                (windowHeight - rect.top) /
-                (windowHeight + rect.height);
-
-            const clampedProgress = Math.max(
-                0,
-                Math.min(1, progress)
-            );
-
-            /*
-             * De -8% à +8%
-             */
-
-            const yPercent =
-                -15 + (clampedProgress * 30);
-
-            heroPicture.style.transform =
-                `translate3d(0, ${yPercent}%, 0)`;
-
-            ticking = false;
-        }
-
-        function requestUpdate() {
-
-            if (!ticking) {
-                requestAnimationFrame(updateHeroParallax);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener(
-            "scroll",
-            requestUpdate,
-            { passive: true }
-        );
-
-        window.addEventListener(
-            "resize",
-            requestUpdate
-        );
-
-        updateHeroParallax();
-    }
-}
-
-
-</script>
 
 
     <!-- ==================================================
