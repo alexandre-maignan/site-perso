@@ -193,6 +193,68 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/components.css">
 
+
+
+
+
+<style>
+    html,
+    body {
+        margin: 0;
+        min-height: 100%;
+    }
+
+    .page-loader {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100dvh;
+
+        z-index: 99999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #0D0D0D;
+        pointer-events: none;
+    }
+
+    html.loader-seen .page-loader {
+        display: none;
+    }
+
+    .page-loader-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+    }
+
+    .loader-progress {
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        opacity: 0.8;
+        font-variant-numeric: tabular-nums;
+    }
+
+
+</style>
+
+<script>
+    if (sessionStorage.getItem("loaderShown")) {
+        document.documentElement.classList.add("loader-seen");
+    }
+</script>
+
+
+
+
+
 </head>
 
 
@@ -200,7 +262,34 @@
 
 
 
+
+
 <body>
+
+<!-- ==================================================
+     PAGE LOADER
+================================================== -->
+
+<div class="page-loader" id="page-loader">
+
+    <div class="page-loader-content">
+
+        <span class="loader-name">
+            
+        </span>
+
+        <span class="loader-progress" id="loader-progress">
+            80%
+        </span>
+
+    </div>
+
+</div>
+
+
+
+
+
 
 
 
@@ -297,6 +386,7 @@
                 class="hero-image"
                 src="images/hero/hero-image.webp"
                 alt="Sculpture classique"
+
             >
 
         </picture>
@@ -783,191 +873,568 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 
     gsap.registerPlugin(ScrollTrigger);
 
 
-
     /* ==================================================
-       HERO IMAGE
+       VARIABLES
     ================================================== */
 
-    gsap.to(".hero-image", {
-
-        scale: 1,
-
-        duration: 2.2,
-
-        ease: "power3.out"
-
-    });
+    let pageAnimationsStarted = false;
+    let heroParallaxInitialized = false;
 
 
     /* ==================================================
-       HERO TITLE
+       ÉTAT INITIAL
     ================================================== */
 
-    gsap.from(".hero-title span", {
+    function setInitialAnimationState() {
 
-        yPercent: 110,
+        /* ==================================================
+           HERO IMAGE
+        ================================================== */
 
-        opacity: 0,
+        gsap.set(
 
-        duration: 1.4,
+            ".hero-image",
 
-        stagger: 0.12,
+            {
+                scale: 1.08
+            }
 
-        delay: 0.3,
-
-        ease: "power4.out"
-
-    });
+        );
 
 
+        /* ==================================================
+           TITRE
+        ================================================== */
 
+        gsap.set(
+
+            ".hero-title span",
+
+            {
+                yPercent: 110,
+                opacity: 0
+            }
+
+        );
+
+
+        /* ==================================================
+           EYEBROW
+        ================================================== */
+
+        gsap.set(
+
+            ".hero-eyebrow",
+
+            {
+                y: 20,
+                opacity: 0
+            }
+
+        );
+
+    }
 
 
     /* ==================================================
-       HERO EYEBROW
+       ANIMATIONS DE LA PAGE
     ================================================== */
 
-    gsap.from(".hero-eyebrow", {
+    function startPageAnimations() {
 
-        y: 20,
+        /*
+         * Protection contre un double lancement.
+         */
 
-        opacity: 0,
+        if (pageAnimationsStarted) {
 
-        duration: 1,
+            return;
 
-        delay: 0.5,
+        }
 
-        ease: "power3.out"
-
-    });
+        pageAnimationsStarted = true;
 
 
-    /* ==================================================
-       PARALLAX IMAGES
-    ================================================== */
+        /* ==================================================
+           HERO IMAGE
+        ================================================== */
 
-    document
-        .querySelectorAll(".parallax-image")
-        .forEach(image => {
+        gsap.to(
 
-            gsap.fromTo(
+            ".hero-image",
 
-                image,
+            {
 
-                {
-                    yPercent: -8
-                },
+                scale: 1,
 
-                {
-                    yPercent: 8,
+                duration: 2.2,
 
-                    ease: "none",
+                ease: "power3.out"
 
-                    scrollTrigger: {
+            }
 
-                        trigger:
-                            image.closest(".image-section"),
+        );
 
-                        start: "top bottom",
 
-                        end: "bottom top",
+        /* ==================================================
+           HERO TITLE
+        ================================================== */
 
-                        scrub: true
+        gsap.to(
+
+            ".hero-title span",
+
+            {
+
+                yPercent: 0,
+
+                opacity: 1,
+
+                duration: 1.4,
+
+                stagger: 0.12,
+
+                delay: 0.3,
+
+                ease: "power4.out"
+
+            }
+
+        );
+
+
+        /* ==================================================
+           HERO EYEBROW
+        ================================================== */
+
+        gsap.to(
+
+            ".hero-eyebrow",
+
+            {
+
+                y: 0,
+
+                opacity: 1,
+
+                duration: 1,
+
+                delay: 0.5,
+
+                ease: "power3.out"
+
+            }
+
+        );
+
+
+        /* ==================================================
+           PARALLAX IMAGES
+        ================================================== */
+
+        document
+            .querySelectorAll(".parallax-image")
+            .forEach(image => {
+
+                gsap.fromTo(
+
+                    image,
+
+                    {
+                        yPercent: -8
+                    },
+
+                    {
+
+                        yPercent: 8,
+
+                        ease: "none",
+
+                        scrollTrigger: {
+
+                            trigger:
+                                image.closest(".image-section"),
+
+                            start: "top bottom",
+
+                            end: "bottom top",
+
+                            scrub: true
+
+                        }
 
                     }
 
-                }
+                );
 
-            );
+            });
+
+
+        /* ==================================================
+           HERO PARALLAX
+        ================================================== */
+
+        initHeroParallax();
+
+
+        /*
+         * Recalcul du layout après le premier rendu.
+         */
+
+        requestAnimationFrame(() => {
+
+            ScrollTrigger.refresh();
 
         });
 
+    }
 
 
+    /* ==================================================
+       HERO PARALLAX
+    ================================================== */
+
+    function initHeroParallax() {
+
+        /*
+         * Ne pas initialiser plusieurs fois.
+         */
+
+        if (heroParallaxInitialized) {
+
+            return;
+
+        }
 
 
+        /*
+         * Uniquement desktop.
+         */
 
-/* ==================================================
-   HERO PARALLAX
-================================================== */
+        if (
+            !window.matchMedia(
+                "(min-width: 701px)"
+            ).matches
+        ) {
 
-if (window.matchMedia("(min-width: 701px)").matches) {
+            return;
 
-    const heroPicture = document.querySelector(".hero-picture");
+        }
 
-    if (heroPicture) {
+
+        const heroPicture =
+            document.querySelector(".hero-picture");
+
+        const hero =
+            document.querySelector(".hero");
+
+
+        if (!heroPicture || !hero) {
+
+            return;
+
+        }
+
+
+        heroParallaxInitialized = true;
+
 
         let ticking = false;
 
+
         function updateHeroParallax() {
 
-            const hero = document.querySelector(".hero");
+            const rect =
+                hero.getBoundingClientRect();
 
-            if (!hero) {
-                return;
-            }
+            const windowHeight =
+                window.innerHeight;
 
-            const rect = hero.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            /*
-             * Progression du hero :
-             * 0 = hero en bas de l'écran
-             * 1 = hero en haut de l'écran
-             */
 
             const progress =
                 (windowHeight - rect.top) /
                 (windowHeight + rect.height);
 
-            const clampedProgress = Math.max(
-                0,
-                Math.min(1, progress)
-            );
 
-            /*
-             * De -8% à +8%
-             */
+            const clampedProgress =
+                Math.max(
+                    0,
+                    Math.min(1, progress)
+                );
+
 
             const yPercent =
-                -15 + (clampedProgress * 30);
+                -15 +
+                (clampedProgress * 30);
+
 
             heroPicture.style.transform =
                 `translate3d(0, ${yPercent}%, 0)`;
 
+
             ticking = false;
+
         }
 
-        function requestUpdate() {
 
-            if (!ticking) {
-                requestAnimationFrame(updateHeroParallax);
-                ticking = true;
+        function requestHeroParallaxUpdate() {
+
+            if (ticking) {
+
+                return;
+
             }
+
+
+            ticking = true;
+
+
+            requestAnimationFrame(
+                updateHeroParallax
+            );
+
         }
 
-        window.addEventListener(
-            "scroll",
-            requestUpdate,
-            { passive: true }
-        );
 
         window.addEventListener(
-            "resize",
-            requestUpdate
+
+            "scroll",
+
+            requestHeroParallaxUpdate,
+
+            {
+                passive: true
+            }
+
         );
+
+
+        window.addEventListener(
+
+            "resize",
+
+            requestHeroParallaxUpdate
+
+        );
+
 
         updateHeroParallax();
-    }
-}
 
+    }
+
+
+    /* ==================================================
+       AFFICHAGE IMMÉDIAT
+       
+       Utilisé notamment avec le bfcache.
+    ================================================== */
+
+    function showPageImmediately() {
+
+        /*
+         * Arrête les animations en cours.
+         */
+
+        gsap.killTweensOf([
+
+            ".hero-image",
+
+            ".hero-title span",
+
+            ".navbar",
+
+            ".hero-scroll",
+
+            ".hero-eyebrow"
+
+        ]);
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        gsap.set(
+
+            ".hero-image",
+
+            {
+                scale: 1
+            }
+
+        );
+
+
+        /* ==================================================
+           TITRE
+        ================================================== */
+
+        gsap.set(
+
+            ".hero-title span",
+
+            {
+
+                yPercent: 0,
+
+                opacity: 1
+
+            }
+
+        );
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        gsap.set(
+
+            ".navbar",
+
+            {
+
+                y: 0,
+
+                opacity: 1
+
+            }
+
+        );
+
+
+        /* ==================================================
+           SCROLL
+        ================================================== */
+
+        gsap.set(
+
+            ".hero-scroll",
+
+            {
+
+                y: 0,
+
+                opacity: 1
+
+            }
+
+        );
+
+
+        /* ==================================================
+           EYEBROW
+        ================================================== */
+
+        gsap.set(
+
+            ".hero-eyebrow",
+
+            {
+
+                y: 0,
+
+                opacity: 1
+
+            }
+
+        );
+
+
+        ScrollTrigger.refresh();
+
+    }
+
+
+    /* ==================================================
+       INITIALISATION DES ANIMATIONS
+    ================================================== */
+
+    /*
+     * Prépare les éléments avant leur animation.
+     *
+     * Le loader peut ensuite appeler
+     * startPageAnimations().
+     */
+
+    setInitialAnimationState();
 
 </script>
+
+
+<script src="js/loader.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- ==================================================
