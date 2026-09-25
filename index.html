@@ -902,184 +902,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <script>
 
     gsap.registerPlugin(ScrollTrigger);
 
 
     /* ==================================================
-       CONFIGURATION
-    ================================================== */
-
-    const LOADER_DURATION = 1.2;
-    const ANIMATION_OVERLAP = 0.4;
-
-
-    /* ==================================================
        VARIABLES
     ================================================== */
 
-    const pageLoader =
-        document.querySelector("#page-loader");
-
-    const loaderProgress =
-        document.querySelector("#loader-progress");
-
     let pageAnimationsStarted = false;
     let heroParallaxInitialized = false;
-    let progressAnimation = null;
-
-
-    /* ==================================================
-       PROGRESSION DU LOADER
-    ================================================== */
-
-    function updateLoaderProgress(value) {
-
-        if (!loaderProgress) {
-            return;
-        }
-
-        loaderProgress.textContent =
-            `${Math.round(value)}%`;
-
-    }
-
-
-    /*
-     * Commence directement à 40 %.
-     *
-     * Le compteur avance ensuite progressivement
-     * jusqu'à 90 % pendant le chargement.
-     *
-     * Cela ne bloque pas le chargement réel de la page.
-     */
-
-    function startLoaderProgress() {
-
-        if (!loaderProgress) {
-            return;
-        }
-
-        const progress = {
-            value: 80
-        };
-
-        updateLoaderProgress(80);
-
-
-        progressAnimation = gsap.to(
-
-            progress,
-
-            {
-
-                value: 90,
-
-                duration: 4,
-
-                ease: "power1.out",
-
-                onUpdate: () => {
-
-                    updateLoaderProgress(
-                        progress.value
-                    );
-
-                }
-
-            }
-
-        );
-
-    }
-
-
-    /*
-     * Termine la progression jusqu'à 100 %.
-     *
-     * Cette fonction est appelée uniquement lorsque
-     * le chargement réel de la page est terminé.
-     */
-
-    function finishLoaderProgress(onComplete) {
-
-        if (!loaderProgress) {
-
-            onComplete();
-
-            return;
-
-        }
-
-
-        /*
-         * Arrête l'animation 40 → 90 %.
-         */
-
-        if (progressAnimation) {
-
-            progressAnimation.kill();
-
-            progressAnimation = null;
-
-        }
-
-
-        /*
-         * Récupère la valeur actuellement affichée.
-         */
-
-        const currentValue =
-            parseFloat(
-                loaderProgress.textContent
-            ) || 40;
-
-
-        const progress = {
-
-            value: currentValue
-
-        };
-
-
-        /*
-         * Termine jusqu'à 100 %.
-         */
-
-        gsap.to(
-
-            progress,
-
-            {
-
-                value: 100,
-
-                duration: 0.35,
-
-                ease: "power2.out",
-
-                onUpdate: () => {
-
-                    updateLoaderProgress(
-                        progress.value
-                    );
-
-                },
-
-                onComplete: () => {
-
-                    updateLoaderProgress(100);
-
-                    onComplete();
-
-                }
-
-            }
-
-        );
-
-    }
 
 
     /* ==================================================
@@ -1088,54 +931,48 @@
 
     function setInitialAnimationState() {
 
-
-        /* HERO IMAGE */
+        /* ==================================================
+           HERO IMAGE
+        ================================================== */
 
         gsap.set(
 
             ".hero-image",
 
             {
-
                 scale: 1.08
-
             }
 
         );
 
 
-        /* TITRE */
+        /* ==================================================
+           TITRE
+        ================================================== */
 
         gsap.set(
 
             ".hero-title span",
 
             {
-
                 yPercent: 110,
-
                 opacity: 0
-
             }
 
         );
 
 
-       
-
-
-        /* EYEBROW */
+        /* ==================================================
+           EYEBROW
+        ================================================== */
 
         gsap.set(
 
             ".hero-eyebrow",
 
             {
-
                 y: 20,
-
                 opacity: 0
-
             }
 
         );
@@ -1210,11 +1047,6 @@
         );
 
 
-
-
-
-
-
         /* ==================================================
            HERO EYEBROW
         ================================================== */
@@ -1253,9 +1085,7 @@
                     image,
 
                     {
-
                         yPercent: -8
-
                     },
 
                     {
@@ -1417,9 +1247,7 @@
             requestHeroParallaxUpdate,
 
             {
-
                 passive: true
-
             }
 
         );
@@ -1466,22 +1294,24 @@
         ]);
 
 
-        /* HERO */
+        /* ==================================================
+           HERO
+        ================================================== */
 
         gsap.set(
 
             ".hero-image",
 
             {
-
                 scale: 1
-
             }
 
         );
 
 
-        /* TITRE */
+        /* ==================================================
+           TITRE
+        ================================================== */
 
         gsap.set(
 
@@ -1498,7 +1328,9 @@
         );
 
 
-        /* NAVBAR */
+        /* ==================================================
+           NAVBAR
+        ================================================== */
 
         gsap.set(
 
@@ -1515,7 +1347,9 @@
         );
 
 
-        /* SCROLL */
+        /* ==================================================
+           SCROLL
+        ================================================== */
 
         gsap.set(
 
@@ -1532,7 +1366,9 @@
         );
 
 
-        /* EYEBROW */
+        /* ==================================================
+           EYEBROW
+        ================================================== */
 
         gsap.set(
 
@@ -1555,342 +1391,38 @@
 
 
     /* ==================================================
-       SORTIE DU LOADER
+       INITIALISATION DES ANIMATIONS
     ================================================== */
 
-    function removeLoader() {
-
-        if (!pageLoader) {
-
-            startPageAnimations();
-
-            return;
-
-        }
-
-
-        /*
-         * Sécurité.
-         */
-
-        if (
-            !document.body.contains(pageLoader)
-        ) {
-
-            startPageAnimations();
-
-            return;
-
-        }
-
-
-        /*
-         * Timeline de sortie.
-         */
-
-        const loaderTimeline =
-            gsap.timeline({
-
-                onComplete: () => {
-
-                    /*
-                     * Supprime complètement
-                     * le loader du DOM.
-                     */
-
-                    if (
-                        pageLoader &&
-                        document.body.contains(pageLoader)
-                    ) {
-
-                        pageLoader.remove();
-
-                    }
-
-                }
-
-            });
-
-
-        /*
-         * Le loader monte.
-         */
-
-        loaderTimeline.to(
-
-            pageLoader,
-
-            {
-
-                yPercent: -100,
-
-                duration: LOADER_DURATION,
-
-                ease: "power4.inOut"
-
-            }
-
-        );
-
-
-        /*
-         * Les animations de la page commencent
-         * pendant la sortie du loader.
-         */
-
-        loaderTimeline.call(
-
-            () => {
-
-                startPageAnimations();
-
-            },
-
-            null,
-
-            ANIMATION_OVERLAP
-
-        );
-
-    }
-
-
-    /* ==================================================
-       PAGE CHARGÉE
-    ================================================== */
-
-    function handlePageLoaded() {
-
-        /*
-         * IMPORTANT :
-         *
-         * On attend d'abord que le compteur atteigne
-         * 100 % avant de commencer à retirer le loader.
-         */
-
-        finishLoaderProgress(
-
-            () => {
-
-                removeLoader();
-
-            }
-
-        );
-
-    }
-
-
-    /* ==================================================
-       INITIALISATION
-    ================================================== */
-
-    function initializePage() {
-
-        /*
-         * Prépare les animations avant le rendu.
-         */
-
-        setInitialAnimationState();
-
-
-        /*
-         * Vérifie si le loader a déjà été affiché
-         * pendant cette session.
-         */
-
-        let loaderAlreadyShown = false;
-
-
-        try {
-
-            loaderAlreadyShown =
-                sessionStorage.getItem(
-                    "loaderShown"
-                ) === "true";
-
-        } catch (error) {
-
-            loaderAlreadyShown = false;
-
-        }
-
-
-        /* ==================================================
-           PAGES SUIVANTES
-        ================================================== */
-
-        if (loaderAlreadyShown) {
-
-            /*
-             * Pas de loader sur les pages suivantes.
-             */
-
-            if (pageLoader) {
-
-                pageLoader.remove();
-
-            }
-
-
-            startPageAnimations();
-
-
-            return;
-
-        }
-
-
-        /* ==================================================
-           PREMIER ACCÈS
-        ================================================== */
-
-        try {
-
-            sessionStorage.setItem(
-                "loaderShown",
-                "true"
-            );
-
-        } catch (error) {
-
-            /*
-             * Rien de bloquant.
-             */
-
-        }
-
-
-        /*
-         * Commence à 40 %.
-         */
-
-        startLoaderProgress();
-
-
-        /*
-         * Si la page est déjà complètement chargée.
-         */
-
-        if (
-            document.readyState === "complete"
-        ) {
-
-            handlePageLoaded();
-
-            return;
-
-        }
-
-
-        /*
-         * Attend le chargement complet.
-         *
-         * Les images loading="lazy" ne sont
-         * PAS forcées à charger.
-         */
-
-        window.addEventListener(
-
-            "load",
-
-            handlePageLoaded,
-
-            {
-
-                once: true
-
-            }
-
-        );
-
-
-        /*
-         * Sécurité :
-         * le loader ne peut pas rester bloqué
-         * indéfiniment.
-         */
-
-        window.setTimeout(
-
-            () => {
-
-                if (!pageAnimationsStarted) {
-
-                    handlePageLoaded();
-
-                }
-
-            },
-
-            10000
-
-        );
-
-    }
-
-
-    /* ==================================================
-       BFCACHE
-    ================================================== */
-
-    window.addEventListener(
-
-        "pageshow",
-
-        event => {
-
-            if (event.persisted) {
-
-                /*
-                 * Aucun loader au retour navigateur.
-                 */
-
-                if (pageLoader) {
-
-                    pageLoader.remove();
-
-                }
-
-
-                showPageImmediately();
-
-            }
-
-        }
-
-    );
-
-
-    /* ==================================================
-       LANCEMENT
-    ================================================== */
-
-    if (
-        document.readyState === "loading"
-    ) {
-
-        document.addEventListener(
-
-            "DOMContentLoaded",
-
-            initializePage,
-
-            {
-
-                once: true
-
-            }
-
-        );
-
-    } else {
-
-        initializePage();
-
-    }
+    /*
+     * Prépare les éléments avant leur animation.
+     *
+     * Le loader peut ensuite appeler
+     * startPageAnimations().
+     */
+
+    setInitialAnimationState();
 
 </script>
+
+
+<script src="js/loader.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
