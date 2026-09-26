@@ -37,19 +37,11 @@ body {
 
 html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
 }
 
-html.lenis {
-    height: auto;
-}
 
-html.lenis.lenis-smooth {
-    scroll-behavior: auto;
-}
-
-html.lenis.lenis-stopped {
-    overflow: hidden;
-}
 
 
 
@@ -112,18 +104,6 @@ body.menu-open {
     }
 
 }
-
-
-
-
-
-
-
-:root {
-    --main-entry-duration: 1s;
-}
-
-
 
 
 
