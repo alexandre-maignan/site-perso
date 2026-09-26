@@ -199,13 +199,44 @@
     <link rel="stylesheet"
           href="css/components.css">
 
+
+
+
+    <link rel="stylesheet" href="css/loader.css">
+
+
+    <script>
+        if (sessionStorage.getItem("loaderShown")) {
+            document.documentElement.classList.add("loader-seen");
+        }
+    </script>
+
+
+
+
+
+
 </head>
 
 <body>
 
 
 
+<div class="page-loader" id="page-loader">
 
+    <div class="page-loader-content">
+
+        <span class="loader-name">
+            
+        </span>
+
+        <span class="loader-progress" id="loader-progress">
+            0%
+        </span>
+
+    </div>
+
+</div>
 
 
 
@@ -733,6 +764,16 @@
 <button id="back-to-top" aria-label="Retour en haut">
     <i class="fa-solid fa-arrow-up-long"></i>
 </button>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
+
+<script src="js/loader.js"></script>
+
 
 <script src="js/page-load.js"></script>
 <script src="js/dessins.js"></script>

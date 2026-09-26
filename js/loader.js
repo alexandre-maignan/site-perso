@@ -1,4 +1,3 @@
-
 /* ==================================================
    PAGE LOADER
 ================================================== */
@@ -40,10 +39,10 @@ function startLoaderProgress() {
     }
 
     const progress = {
-        value: 80
+        value: 0
     };
 
-    updateLoaderProgress(80);
+    updateLoaderProgress(0);
 
 
     progressAnimation = gsap.to(
@@ -85,7 +84,7 @@ function finishLoaderProgress(onComplete) {
     loaderFinished = true;
 
 
-    /* Stoppe l'animation 80 → 90 */
+    /* Stoppe l'animation 0 → 90 */
 
     if (progressAnimation) {
 
@@ -109,7 +108,7 @@ function finishLoaderProgress(onComplete) {
     const currentValue =
         parseFloat(
             loaderProgress.textContent
-        ) || 80;
+        ) || 0;
 
 
     const progress = {
@@ -333,7 +332,7 @@ function initializeLoader() {
 
 
     /* ==================================================
-       DÉPART À 80 %
+       DÉPART À 0 %
     ================================================== */
 
     startLoaderProgress();
