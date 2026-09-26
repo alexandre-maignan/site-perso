@@ -106,30 +106,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==================================================
-   NAVBAR — MIX BLEND MODE
+   NAVBAR — HIDE / SHOW ON SCROLL
 ================================================== */
 
 const navbar = document.querySelector(".navbar");
 
-if (navbar) {
-    gsap.set(navbar, {
-        mixBlendMode: "difference"
-    });
+let lastScrollY = window.scrollY;
+let ticking = false;
+
+function updateNavbar() {
+
+    const currentScrollY = window.scrollY;
+
+    // Tout en haut → navbar toujours visible
+    if (currentScrollY <= 0) {
+        navbar.classList.remove("navbar-hidden");
+    }
+
+    // Scroll vers le bas → cacher
+    else if (currentScrollY > lastScrollY) {
+        navbar.classList.add("navbar-hidden");
+    }
+
+    // Scroll vers le haut → afficher
+    else if (currentScrollY < lastScrollY) {
+        navbar.classList.remove("navbar-hidden");
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
 }
+
+window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+    }
+
+}, { passive: true });
+
+
+
+
+
+
+
+
+
+
+
+
+        /* ==================================================
+           NAVBAR
+
+        ================================================== */
+        
+        /*
+
+        const navbar =
+            document.querySelector(".navbar");
+
+
+        gsap.set(navbar, {
+
+            mixBlendMode: "difference",
+
+            color: "#ffffff"
+
+        });
+*/
