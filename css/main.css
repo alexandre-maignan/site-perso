@@ -79,7 +79,7 @@ html.lenis.lenis-stopped {
 body {
     font-family: "Inter", sans-serif;
     color: var(--color-primary);
-    background-color: black;
+    background-color: var(--color-background);
     margin: 0;
     letter-spacing: -0.04em;
 
