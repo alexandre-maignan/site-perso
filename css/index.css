@@ -167,12 +167,6 @@ img {
 }
 
 
-/* Hover */
-
-.hero-scroll:hover {
-    opacity: 0.65;
-}
-
 
 
 
@@ -392,58 +386,12 @@ img {
 
     white-space: nowrap;
 
-    transition: opacity 0.3s ease;
 }
 
 
-.gallery-header a::after {
-    content: "→";
-
-    font-size: 15px;
-    line-height: 1;
-
-    transition:
-        transform 0.45s
-        cubic-bezier(0.16, 1, 0.3, 1);
-}
 
 
-.gallery-header a::before {
-    content: "";
 
-    position: absolute;
-
-    left: 0;
-    right: 23px;
-    bottom: -7px;
-
-    height: 1px;
-
-    background: #111;
-
-    transform: scaleX(0);
-    transform-origin: right;
-
-    transition:
-        transform 0.45s
-        cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-
-.gallery-header a:hover {
-    opacity: 0.65;
-}
-
-
-.gallery-header a:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-
-.gallery-header a:hover::after {
-    transform: translateX(5px);
-}
 
 
 /* ==================================================

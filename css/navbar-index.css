@@ -169,14 +169,8 @@
 
     font-weight: 500;
 
-    transition:
-        opacity 0.3s cubic-bezier(.55, 0, .1, 1);
 }
 
-
-.nav-links a:hover {
-    opacity: 0.5;
-}
 
 
 /* ==================================================
