@@ -145,7 +145,7 @@ body.menu-open {
     position: relative;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine)  and (min-width: 701px) {
 
     .hover-link::after {
         content: "";

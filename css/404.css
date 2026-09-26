@@ -21,68 +21,19 @@
 }
 
 .error-content h1 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
 .error-content p:not(.error-code) {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: 1rem;
     margin-bottom: 40px;
 }
 
 
 .error-link {
+    font-size: 1rem;
     color: #111;
     text-decoration: none;
-    border-bottom: 1px solid #111;
-    padding-bottom: 4px;
 }
-
-.error-link:hover {
-    opacity: 0.6;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
