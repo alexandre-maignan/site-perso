@@ -72,34 +72,12 @@ if (menuToggle && menuClose && navLinks) {
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    const navbar = document.querySelector(".navbar");
-    const hero = document.querySelector(".hero");
 
-    if (!navbar || !hero) {
-        return;
-    }
 
-    function updateNavbar() {
 
-        const heroRect = hero.getBoundingClientRect();
 
-        navbar.classList.toggle(
-            "navbar-over-hero",
-            heroRect.bottom > 0
-        );
-    }
 
-    updateNavbar();
-
-    window.addEventListener("scroll", updateNavbar, {
-        passive: true
-    });
-
-    window.addEventListener("resize", updateNavbar);
-
-});
 
 
 
@@ -107,73 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* ==================================================
-   NAVBAR — HIDE / SHOW ON SCROLL
+   NAVBAR — MIX BLEND MODE
 ================================================== */
 
 const navbar = document.querySelector(".navbar");
 
-let lastScrollY = window.scrollY;
-let ticking = false;
-
-function updateNavbar() {
-
-    const currentScrollY = window.scrollY;
-
-    // Tout en haut → navbar toujours visible
-    if (currentScrollY <= 0) {
-        navbar.classList.remove("navbar-hidden");
-    }
-
-    // Scroll vers le bas → cacher
-    else if (currentScrollY > lastScrollY) {
-        navbar.classList.add("navbar-hidden");
-    }
-
-    // Scroll vers le haut → afficher
-    else if (currentScrollY < lastScrollY) {
-        navbar.classList.remove("navbar-hidden");
-    }
-
-    lastScrollY = currentScrollY;
-    ticking = false;
+if (navbar) {
+    gsap.set(navbar, {
+        mixBlendMode: "difference"
+    });
 }
-
-window.addEventListener("scroll", () => {
-
-    if (!ticking) {
-        window.requestAnimationFrame(updateNavbar);
-        ticking = true;
-    }
-
-}, { passive: true });
-
-
-
-
-
-
-
-
-
-
-
-
-        /* ==================================================
-           NAVBAR
-
-        ================================================== */
-        
-        /*
-
-        const navbar =
-            document.querySelector(".navbar");
-
-
-        gsap.set(navbar, {
-
-            mixBlendMode: "difference",
-
-            color: "#ffffff"
-
-        });
-*/
