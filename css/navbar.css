@@ -543,7 +543,7 @@
         visibility: visible;
 
         transition:
-            opacity 0.25s ease,
+            opacity 0.15s ease,
             visibility 0s linear 0s;
     }
 
