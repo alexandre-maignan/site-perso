@@ -203,6 +203,14 @@ if (
 
 
 
+
+
+
+
+
+
+
+
 /* ==================================================
    NAVBAR — NAVBAR-TOP + HIDE ON SCROLL
 ================================================== */
@@ -211,7 +219,8 @@ const navbar = document.querySelector(".navbar");
 
 if (navbar) {
 
-    const TOP_THRESHOLD = 200;
+    const TOP_THRESHOLD = 300;
+    const HIDE_THRESHOLD = 150;
 
     let lastScrollY = window.scrollY;
 
@@ -245,10 +254,13 @@ if (navbar) {
 
         /* ==================================================
            NAVBAR HIDE / SHOW
-           FONCTIONNE DÈS LE PREMIER PIXEL
+           ACTIVÉ APRÈS 150 PX
         ================================================== */
 
-        if (currentScrollY > lastScrollY) {
+        if (
+            currentScrollY > lastScrollY &&
+            currentScrollY > HIDE_THRESHOLD
+        ) {
 
             // ↓ Scroll vers le bas
             navbar.classList.add("navbar-hidden");
