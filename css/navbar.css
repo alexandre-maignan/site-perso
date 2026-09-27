@@ -388,41 +388,36 @@
     /* ==================================================
        CROIX
     ================================================== */
+
     .menu-close {
         display: flex;
 
         align-items: center;
         justify-content: center;
-        gap: 8px;
+
+        width: 40px;
 
         margin: 0;
         padding: 0;
 
         border: none;
+
         background: transparent;
 
         color: var(--color-primary);
 
         font-family: inherit;
-        font-size: 14px;
-        font-weight: 500;
+
+        font-size: 34px;
+
+        font-weight: 300;
+
         line-height: 1;
 
         cursor: pointer;
-
-        text-transform: uppercase;
-
     }
 
-    .menu-close span:last-child {
-        display: block;
 
-        font-size: 28px;
-        font-weight: 300;
-        line-height: 1;
-
-        transform: translateY(-2px);
-    }
     /* ==================================================
        CONTENU
     ================================================== */
