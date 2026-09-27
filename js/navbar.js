@@ -211,7 +211,7 @@ const navbar = document.querySelector(".navbar");
 
 if (navbar) {
 
-    const TOP_THRESHOLD = 100;
+    const TOP_THRESHOLD = 200;
 
     let lastScrollY = window.scrollY;
 
@@ -220,7 +220,8 @@ if (navbar) {
        uniquement si la classe existe
        initialement dans le HTML.
     */
-    const hasNavbarTop = navbar.classList.contains("navbar-top");
+    const hasNavbarTop =
+        navbar.classList.contains("navbar-top");
 
 
     function updateNavbar() {
@@ -244,17 +245,17 @@ if (navbar) {
 
         /* ==================================================
            NAVBAR HIDE / SHOW
+           FONCTIONNE DÈS LE PREMIER PIXEL
         ================================================== */
 
-        if (
-            currentScrollY > lastScrollY &&
-            currentScrollY > TOP_THRESHOLD
-        ) {
+        if (currentScrollY > lastScrollY) {
 
             // ↓ Scroll vers le bas
             navbar.classList.add("navbar-hidden");
 
-        } else if (currentScrollY < lastScrollY) {
+        }
+
+        else if (currentScrollY < lastScrollY) {
 
             // ↑ Scroll vers le haut
             navbar.classList.remove("navbar-hidden");
