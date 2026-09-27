@@ -72,34 +72,7 @@ if (menuToggle && menuClose && navLinks) {
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    const navbar = document.querySelector(".navbar");
-    const hero = document.querySelector(".hero");
-
-    if (!navbar || !hero) {
-        return;
-    }
-
-    function updateNavbar() {
-
-        const heroRect = hero.getBoundingClientRect();
-
-        navbar.classList.toggle(
-            "navbar-over-hero",
-            heroRect.bottom > 0
-        );
-    }
-
-    updateNavbar();
-
-    window.addEventListener("scroll", updateNavbar, {
-        passive: true
-    });
-
-    window.addEventListener("resize", updateNavbar);
-
-});
 
 
 
@@ -177,3 +150,39 @@ window.addEventListener("scroll", () => {
 
         });
 */
+
+
+
+
+
+
+
+
+/* ==================================================
+   NAVBAR — TRANSPARENTE SUR LES 100 PREMIERS PX
+================================================== */
+
+const navbar = document.querySelector(".navbar");
+
+if (navbar) {
+
+    const TOP_THRESHOLD = 100;
+
+    function updateNavbar() {
+
+        if (window.scrollY < TOP_THRESHOLD) {
+            navbar.classList.add("navbar-top");
+        } else {
+            navbar.classList.remove("navbar-top");
+        }
+
+    }
+
+    updateNavbar();
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar,
+        { passive: true }
+    );
+}

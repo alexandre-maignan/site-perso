@@ -1,7 +1,5 @@
 /* ==================================================
-   NAVBAR
-       background-color: var(--color-background);
-
+   NAVBAR — ÉTAT NORMAL
 ================================================== */
 
 .navbar {
@@ -20,58 +18,35 @@
     z-index: 100;
 
     transition:
-        transform 0.5s cubic-bezier(.55, 0, .1, 1);
-}
-
-.navbar-over-hero {
-    z-index: 999999;
+        transform 0.5s cubic-bezier(.55, 0, .1, 1),
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 
 /* ==================================================
-   NAVBAR SUR LE HERO
+   NAVBAR-TOP
+   TRANSPARENTE + TEXTE BLANC
 ================================================== */
 
-.navbar.navbar-over-hero {
+.navbar-top {
     background-color: transparent;
-    box-shadow: none;
-    border-bottom: none;
+
+    border-bottom-color: transparent;
+
+    z-index: 9999;
 }
 
 
 /* ==================================================
-   ÉLÉMENTS BLANCS SUR LE HERO
+   ÉLÉMENTS BLANCS — NAVBAR-TOP UNIQUEMENT
 ================================================== */
 
-.navbar.navbar-over-hero .logo,
-.navbar.navbar-over-hero .menu-toggle,
-.navbar.navbar-over-hero .menu-text {
-    color: var(--color-background);
-}
-
-.navbar.navbar-over-hero .nav-links a {
-    color: var(--color-background);
-}
-
-
-/* ==================================================
-   MOBILE — COULEURS SUR LE HERO
-================================================== */
-
-@media (max-width: 700px) {
-
-    .navbar.navbar-over-hero .nav-links a {
-        color: black;
-    }
-
-    .navbar.navbar-over-hero .logo {
-        color: var(--color-background);
-    }
-
-    .navbar.navbar-over-hero .menu-text {
-        color: var(--color-background);
-    }
-
+.navbar-top .logo,
+.navbar-top .menu-toggle,
+.navbar-top .menu-text,
+.navbar-top .nav-links a {
+    color: white;
 }
 
 
@@ -79,7 +54,7 @@
    NAVBAR CACHÉE AU SCROLL
 ================================================== */
 
-.navbar.navbar-hidden {
+.navbar-hidden {
     transform: translateY(-105%);
 }
 
@@ -104,41 +79,32 @@
 
 /* ==================================================
    LOGO
-       font-family: "Noto Serif Display", serif;
-
-           
-
-               mix-blend-mode: difference;
-
-
-
 ================================================== */
 
 .logo {
-
     line-height: 0.9;
 
     text-decoration: none;
 
-
     color: var(--color-primary);
-
 
     font-size: 1.5rem;
 
     font-weight: 400;
 
     transition:
+        color 0.3s ease,
         font-size 0.5s cubic-bezier(.55, 0, .1, 1);
 }
 
 
 /* ==================================================
-   LIENS DESKTOP
+   NAVIGATION DESKTOP
 ================================================== */
 
 .nav-links {
     display: flex;
+
     align-items: center;
 
     margin: 0;
@@ -146,8 +112,13 @@
 }
 
 
+/* ==================================================
+   LISTE DESKTOP
+================================================== */
+
 .nav-links ul {
     display: flex;
+
     align-items: center;
 
     gap: clamp(2rem, 5vw, 6rem);
@@ -156,38 +127,32 @@
     padding: 0;
 
     list-style: none;
-
 }
 
+
+/* ==================================================
+   LIENS DESKTOP
+================================================== */
 
 .nav-links a {
     text-decoration: none;
 
     text-transform: uppercase;
 
-    color: black;
+    color: var(--color-primary);
 
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 
     letter-spacing: 0.08em;
 
     font-weight: 500;
 
-}
-
-
-
-/* ==================================================
-   TITRE DU MENU
-================================================== */
-
-.menu-title {
-    display: none;
+    transition: color 0.3s ease;
 }
 
 
 /* ==================================================
-   BOUTON MENU
+   BOUTON MENU MOBILE
 ================================================== */
 
 .menu-toggle {
@@ -210,7 +175,6 @@
     flex-shrink: 0;
 }
 
-
 .menu-icon::before,
 .menu-icon::after {
     content: "";
@@ -229,18 +193,22 @@
     transform-origin: center;
 }
 
-
-/* Trait supérieur */
-
 .menu-icon::before {
     top: 0;
 }
 
-
-/* Trait inférieur */
-
 .menu-icon::after {
     bottom: 0;
+}
+
+
+/* ==================================================
+   MENU MOBILE
+   CACHÉ PAR DÉFAUT
+================================================== */
+
+.mobile-menu {
+    display: none;
 }
 
 
@@ -257,21 +225,25 @@
    MOBILE
 ================================================== */
 
+/* ==================================================
+   MOBILE
+================================================== */
+
 @media (max-width: 700px) {
 
 
-    /* =========================
+    /* ==================================================
        NAVBAR
-    ========================= */
+    ================================================== */
 
     .navbar {
         height: 70px;
     }
 
 
-    /* =========================
+    /* ==================================================
        CONTENEUR
-    ========================= */
+    ================================================== */
 
     .nav-container {
         width: 100%;
@@ -280,18 +252,28 @@
     }
 
 
-    /* =========================
-       LOGO
-    ========================= */
+    /* ==================================================
+       NAVIGATION DESKTOP
+       CACHÉE SUR MOBILE
+    ================================================== */
+
+    .nav-links {
+        display: none;
+    }
+
+
+    /* ==================================================
+       LOGO NAVBAR
+    ================================================== */
 
     .logo {
         font-size: 19px;
     }
 
 
-    /* =========================
+    /* ==================================================
        BOUTON MENU
-    ========================= */
+    ================================================== */
 
     .menu-toggle {
         text-transform: uppercase;
@@ -302,27 +284,28 @@
         justify-content: center;
 
         gap: 9px;
+
         border: none;
 
-    background: none;
+        background: none;
 
-    padding: 0;
+        padding: 0;
 
-    color: black;
+        color: var(--color-primary);
 
-    font-family: inherit;
+        font-family: inherit;
 
-    font-size: 0.9rem;
+        font-size: 0.9rem;
 
-    cursor: pointer;
+        cursor: pointer;
     }
 
 
-    /* =========================
-       PANNEAU MENU
-    ========================= */
+    /* ==================================================
+       MENU MOBILE
+    ================================================== */
 
-    .nav-links {
+    .mobile-menu {
         position: fixed;
 
         top: 0;
@@ -333,8 +316,7 @@
 
         display: flex;
 
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
 
         margin: 0;
         padding: 0;
@@ -349,15 +331,15 @@
             transform 0.35s ease,
             visibility 0s linear 0.35s;
 
-        z-index: 2000;
+        z-index: 20000;
     }
 
 
-    /* =========================
+    /* ==================================================
        MENU OUVERT
-    ========================= */
+    ================================================== */
 
-    .nav-links.active {
+    .mobile-menu.active {
         visibility: visible;
 
         transform: translateX(0);
@@ -368,109 +350,55 @@
     }
 
 
-    /* =========================
-       CONTENU
-    ========================= */
+    /* ==================================================
+       TOP DU MENU
+       MÊME STRUCTURE QUE LA NAVBAR
+    ================================================== */
 
-    .nav-menu-content {
-        width: 90%;
+    .mobile-menu-top {
+        width: 100%;
+        height: 70px;
+
+        padding: 0 3vw;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        flex-shrink: 0;
     }
 
 
-    /* =========================
-       TITRE
-    ========================= */
+    /* ==================================================
+       LOGO DU MENU
+    ================================================== */
 
-    .menu-title {
-        display: block;
-
-        margin: 0 0 20px 0;
+    .mobile-menu-logo {
+        line-height: 0.9;
 
         color: var(--color-primary);
 
-        font-size: 2.5rem;
+        font-size: 19px;
 
-        text-align: left;
-
-        text-transform: uppercase;
-    }
-
-
-    /* =========================
-       LISTE
-    ========================= */
-
-    .nav-links ul {
-        display: block;
-
-        width: 100%;
-
-        margin: 0;
-        padding: 0;
-
-        list-style: none;
-    }
-
-
-    /* =========================
-       ÉLÉMENTS
-    ========================= */
-
-    .nav-links li {
-        width: 100%;
-
-        margin: 0;
-        padding: 0;
-    }
-
-
-    /* =========================
-       LIENS
-    ========================= */
-
-    .nav-links li a {
-        display: block;
-
-        width: 100%;
-
-        padding: 25px 0;
-
-        color: var(--color-primary);
-
-        font-size: 20px;
-
-        font-weight: 500;
+        font-weight: 400;
 
         text-decoration: none;
+
     }
 
 
-    /* =========================
-       TRAITS ENTRE LES LIENS
-    ========================= */
-
-    .nav-links li + li {
-        border-top: 1px solid #e5e5e5;
-    }
-
-
-    /* =========================
+    /* ==================================================
        CROIX
-    ========================= */
+    ================================================== */
 
     .menu-close {
-        position: absolute;
-
-        top: 20px;
-        right: 5%;
-
         display: flex;
 
         align-items: center;
         justify-content: center;
 
-        width: 40px;
-        height: 40px;
+
 
         margin: 0;
         padding: 0;
@@ -492,33 +420,136 @@
         cursor: pointer;
     }
 
-}
 
+    /* ==================================================
+       CONTENU
+    ================================================== */
 
-/* ==================================================
-   LIGNE SOUS LA NAVBAR — MOBILE
-================================================== 
-
-@media (max-width: 700px) {
-
-    .navbar::after {
-        content: "";
-
-        position: absolute;
-
-        bottom: 0;
-        left: 0;
-
+    .mobile-menu-content {
         width: 100%;
-        height: 1px;
+        padding: 50px 3vw;
+        margin: 0 auto;
 
-        background: var(--color-background);
 
-        transform: scaleY(0.5);
-
-        transform-origin: center;
     }
 
-}
 
-*/
+    /* ==================================================
+       TITRE
+    ================================================== */
+
+    .menu-title {
+        display: block;
+
+        margin: 25px 0 20px 0;
+
+        color: var(--color-primary);
+
+        font-size: 2.5rem;
+
+        text-align: left;
+
+        text-transform: uppercase;
+    }
+
+
+    /* ==================================================
+       LISTE
+    ================================================== */
+
+    .mobile-menu ul {
+        display: block;
+
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+    }
+
+
+    /* ==================================================
+       ÉLÉMENTS
+    ================================================== */
+
+    .mobile-menu li {
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* ==================================================
+       LIENS
+    ================================================== */
+
+    .mobile-menu li a {
+        display: block;
+
+        width: 100%;
+
+        padding: 25px 0;
+
+        color: var(--color-primary);
+
+        font-size: 20px;
+
+        font-weight: 500;
+
+        text-decoration: none;
+    }
+
+
+    /* ==================================================
+       TRAITS ENTRE LES LIENS
+    ================================================== */
+
+    .mobile-menu li + li {
+        border-top: 1px solid #e5e5e5;
+    }
+
+
+
+
+
+
+
+
+    /* ==================================================
+       FILTRE DERRIÈRE LE MENU
+    ================================================== */
+
+    .mobile-menu-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        background-color: rgba(0, 0, 0, 0.60);
+
+        opacity: 0;
+        visibility: hidden;
+
+
+
+        z-index: 19999;
+    }
+
+
+    /* ==================================================
+       FILTRE VISIBLE
+    ================================================== */
+
+    .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0s linear 0s;
+    }
+
+
+
+}

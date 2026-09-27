@@ -249,62 +249,165 @@
 
 
 
+
 <nav class="navbar">
-    
+
     <div class="nav-container">
+
+        <!-- ==================================================
+             LOGO
+        ================================================== -->
 
         <a href="index.html" class="logo">
             Alexandre Maignan
         </a>
 
+
+        <!-- ==================================================
+             NAVIGATION DESKTOP
+        ================================================== -->
+
+        <div class="nav-links">
+
+            <ul>
+
+                <li>
+                    <a href="index.html" class="hover-link">
+                        Accueil
+                    </a>
+                </li>
+
+                <li>
+                    <a href="dessins.html" class="hover-link">
+                        Dessins
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sculptures.html" class="hover-link">
+                        Sculptures
+                    </a>
+                </li>
+
+                <li>
+                    <a href="a-propos.html" class="hover-link">
+                        À propos
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ==================================================
+             BOUTON MENU MOBILE
+        ================================================== -->
+
         <button
             class="menu-toggle"
             id="menu-toggle"
             aria-label="Ouvrir le menu"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
         >
-            <span class="menu-text">Menu</span>
 
-            <span class="menu-icon" aria-hidden="true">
+            <span class="menu-text">
+                Menu
+            </span>
+
+            <span
+                class="menu-icon"
+                aria-hidden="true"
+            >
                 <span></span>
                 <span></span>
             </span>
+
         </button>
 
-        <div class="nav-links" id="nav-links">
+    </div>
 
-            <button
-                class="menu-close"
-                id="menu-close"
-                aria-label="Fermer le menu"
-            >
-                ×
-            </button>
+</nav>
 
-            <div class="nav-menu-content">
 
-                <p class="menu-title">Menu</p>
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 
-            <ul>
-                <li>
-                    <a href="index.html" class="hover-link">Accueil</a>
-                </li>
 
-                <li>
-                    <a href="dessins.html" class="hover-link">Dessins</a>
-                </li>
+<!-- ==================================================
+     MENU MOBILE
+================================================== -->
 
-                <li>
-                    <a href="sculptures.html" class="hover-link">Sculptures</a>
-                </li>
+<nav
+    class="mobile-menu"
+    id="mobile-menu"
+    aria-label="Navigation mobile"
+    aria-hidden="true"
+>
 
-                <li>
-                    <a href="a-propos.html" class="hover-link">À propos</a>
-                </li>
-            </ul>
+    <!-- ==================================================
+         TOP DU MENU
+    ================================================== -->
 
-            </div>
+    <div class="mobile-menu-top">
 
-        </div>
+        <a href="index.html" class="mobile-menu-logo">
+            Alexandre Maignan
+        </a>
+
+        <button
+            class="menu-close"
+            id="menu-close"
+            aria-label="Fermer le menu"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- ==================================================
+         CONTENU
+    ================================================== -->
+
+    <div class="mobile-menu-content">
+
+        <!-- TITRE -->
+
+        <p class="menu-title">
+            Menu
+        </p>
+
+
+        <!-- LIENS -->
+
+        <ul>
+
+            <li>
+                <a href="index.html" class="hover-link">
+                    Accueil
+                </a>
+            </li>
+
+            <li>
+                <a href="dessins.html" class="hover-link">
+                    Dessins
+                </a>
+            </li>
+
+            <li>
+                <a href="sculptures.html" class="hover-link">
+                    Sculptures
+                </a>
+            </li>
+
+            <li>
+                <a href="a-propos.html" class="hover-link">
+                    À propos
+                </a>
+            </li>
+
+        </ul>
 
     </div>
 
