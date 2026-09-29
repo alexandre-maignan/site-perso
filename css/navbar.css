@@ -93,8 +93,6 @@
 
     font-size: 1.5rem;
 
-    font-weight: 400;
-
 }
 
 
@@ -121,7 +119,7 @@
 
     align-items: center;
 
-    gap: clamp(2rem, 5vw, 6rem);
+    gap: clamp(5rem, 10vw, 10rem);
 
     margin: 0;
     padding: 0;
@@ -137,15 +135,12 @@
 .nav-links a {
     text-decoration: none;
 
-    text-transform: uppercase;
 
     color: var(--color-primary);
 
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 
-    letter-spacing: 0.08em;
 
-    font-weight: 500;
 
 }
 

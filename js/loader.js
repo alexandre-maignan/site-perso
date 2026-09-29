@@ -52,9 +52,9 @@ function startLoaderProgress() {
         {
             value: 90,
 
-            duration: 4,
+            duration: 3,
 
-            ease: "power1.out",
+            ease: "power2.out",
 
             onUpdate: () => {
 
@@ -115,6 +115,8 @@ function finishLoaderProgress(onComplete) {
         value: currentValue
     };
 
+
+    /* 90 → 100 % */
 
     gsap.to(
 
@@ -205,6 +207,10 @@ function removeLoader() {
         });
 
 
+    /* ==================================================
+       ANIMATION DE SORTIE
+    ================================================== */
+
     loaderTimeline.to(
 
         pageLoader,
@@ -221,6 +227,10 @@ function removeLoader() {
 
     );
 
+
+    /* ==================================================
+       LANCEMENT DES ANIMATIONS DE LA PAGE
+    ================================================== */
 
     loaderTimeline.call(
 
@@ -271,6 +281,10 @@ function initializeLoader() {
 
     let loaderAlreadyShown = false;
 
+
+    /* ==================================================
+       SESSION STORAGE
+    ================================================== */
 
     try {
 

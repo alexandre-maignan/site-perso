@@ -124,6 +124,8 @@ img {
     overflow: hidden;
     max-width: 100%;
     padding-bottom: 20px;
+
+    letter-spacing: -0.04em;
 }
 
 
@@ -160,7 +162,6 @@ img {
     font-size: 0.75rem;
     font-weight: 400;
 
-    letter-spacing: 0.08em;
 
 }
 
@@ -374,7 +375,6 @@ img {
     font-weight: 500;
     line-height: 0.95;
 
-    letter-spacing: -0.04em;
 }
 
 
@@ -503,7 +503,6 @@ img {
     font-size: 12px;
     font-weight: 400;
 
-    letter-spacing: 0.08em;
 
     min-width: 0;
 }
@@ -606,7 +605,6 @@ img {
 
         font-size: clamp(52px, 15vw, 60px);
 
-        letter-spacing: -0.04em;
     }
 
 
@@ -702,7 +700,6 @@ img {
 
         font-size: 9px;
 
-        letter-spacing: 0.1em;
     }
 
 
@@ -775,7 +772,6 @@ img {
 
         font-size: 10px;
 
-        letter-spacing: 0.07em;
     }
 
 

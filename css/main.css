@@ -6,7 +6,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    letter-spacing: -0.03em;
 }
 
 *,
@@ -15,7 +14,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    letter-spacing: -0.03em;
 }
 
 
@@ -73,8 +71,6 @@ body {
     color: var(--color-primary);
     background-color: var(--color-background);
     margin: 0;
-    letter-spacing: -0.04em;
-
 }
 
 
@@ -84,6 +80,18 @@ body.menu-open {
 }
 
 
+
+
+body,
+button,
+input,
+textarea,
+select,
+a {
+    letter-spacing: -0.03em;
+    font-weight: 400;
+
+}
 
 
 
