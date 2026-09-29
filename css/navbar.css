@@ -15,11 +15,10 @@
 
     border-bottom: 1px solid #C8C8C8;
 
-
     z-index: 100;
 
     transition:
-        transform 0.6s 0s cubic-bezier(.55, 0, .1, 1),
+        transform 0.6s ease-out,
         background-color 0.3s ease,
         border-color 0.3s ease;
 }
@@ -58,7 +57,7 @@
 ================================================== */
 
 .navbar-hidden {
-    transform: translateY(-105%);
+    transform: translate3d(0, -105%, 0);
 }
 
 
@@ -92,7 +91,6 @@
     color: var(--color-primary);
 
     font-size: 1.5rem;
-
 }
 
 
@@ -135,13 +133,9 @@
 .nav-links a {
     text-decoration: none;
 
-
     color: var(--color-primary);
 
     font-size: 0.9rem;
-
-
-
 }
 
 
@@ -218,7 +212,6 @@
 /* ==================================================
    MOBILE
 ================================================== */
-
 
 @media (max-width: 700px) {
 
@@ -299,11 +292,7 @@
     .mobile-menu {
         position: fixed;
 
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100dvh;
+        inset: 0;
 
         display: flex;
 
@@ -316,15 +305,14 @@
 
         visibility: hidden;
 
-        transform: translateX(-100%);
+        transform: translate3d(-100%, 0, 0);
 
         transition:
-            transform 0.6s 0s cubic-bezier(.55, 0, .1, 1),
-            visibility 0s linear 0.6s;
+            transform 0.35s ease,
+            visibility 0s linear 0.35s;
 
         z-index: 20000;
     }
-
 
 
     /* ==================================================
@@ -334,10 +322,10 @@
     .mobile-menu.active {
         visibility: visible;
 
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
 
         transition:
-            transform 0.6s 0s cubic-bezier(.55, 0, .1, 1),
+            transform 0.35s ease,
             visibility 0s linear 0s;
     }
 
@@ -361,6 +349,7 @@
         flex-shrink: 0;
     }
 
+
     /* ==================================================
        LOGO DU MENU
     ================================================== */
@@ -375,8 +364,8 @@
         font-weight: 400;
 
         text-decoration: none;
-        display: none;
 
+        display: none;
     }
 
 
@@ -419,10 +408,10 @@
 
     .mobile-menu-content {
         width: 100%;
+
         padding: 100px 10vw;
+
         margin: 0 auto;
-
-
     }
 
 
@@ -503,45 +492,37 @@
     }
 
 
+/* ==================================================
+   FILTRE DERRIÈRE LE MENU
+================================================== */
+
+.mobile-menu-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease-out;
+
+    z-index: 19999;
+}
 
 
+/* ==================================================
+   FILTRE VISIBLE
+================================================== */
 
+.mobile-menu-overlay.active {
+    opacity: 1;
 
+    visibility: visible;
 
-
-    /* ==================================================
-       FILTRE DERRIÈRE LE MENU
-    ================================================== */
-
-    .mobile-menu-overlay {
-        position: fixed;
-
-        inset: 0;
-
-        background-color: rgba(0, 0, 0, 0.6);
-
-        opacity: 0;
-        visibility: hidden;
-
-
-
-        z-index: 19999;
-    }
-
-
-    /* ==================================================
-       FILTRE VISIBLE
-    ================================================== */
-
-    .mobile-menu-overlay.active {
-        opacity: 1;
-        visibility: visible;
-
-        transition:
-            opacity 0.3s cubic-bezier(.55, 0, .1, 1),
-            visibility 0s linear 0s;
-    }
-
-
-
+    transition:
+        opacity 0.25s ease-out;
+}
 }
