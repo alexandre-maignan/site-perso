@@ -106,6 +106,12 @@ if (
 
     /* ==================================================
        CLIC SUR UN LIEN
+       
+       Le menu reste ouvert lors du changement
+       de page.
+
+       Il se ferme uniquement si le lien correspond
+       à la page actuellement affichée.
     ================================================== */
 
     mobileMenu
@@ -114,7 +120,22 @@ if (
 
             link.addEventListener(
                 "click",
-                closeMenu
+                () => {
+
+                    const currentPage =
+                        window.location.pathname.split("/").pop() ||
+                        "index.html";
+
+                    const linkPage =
+                        link.getAttribute("href").split("/").pop();
+
+                    if (linkPage === currentPage) {
+
+                        closeMenu();
+
+                    }
+
+                }
             );
 
         });
@@ -141,7 +162,6 @@ if (
     );
 
 }
-
 
 
 
