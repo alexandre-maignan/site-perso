@@ -58,17 +58,3 @@ document.querySelectorAll("a").forEach(link => {
 });
 
 
-/* ==================================================
-   LIENS DU MENU MOBILE
-   FERMER LE MENU AU CLIC
-================================================== */
-
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        closeMenu();
-
-    });
-
-});
