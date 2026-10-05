@@ -229,95 +229,112 @@ if (
 
 
 
+/* ================================================== 
+   NAVBAR — NAVBAR-TOP + HIDE ON SCROLL 
+================================================== */ 
+
+const navbar = document.querySelector(".navbar"); 
+
+if (navbar) { 
+
+    const TOP_THRESHOLD = 300; 
+    const HIDE_THRESHOLD = 150; 
+    const BOTTOM_MARGIN = 100; // marge avant le bas de page
+
+    let lastScrollY = window.scrollY; 
 
 
-/* ==================================================
-   NAVBAR — NAVBAR-TOP + HIDE ON SCROLL
-================================================== */
-
-const navbar = document.querySelector(".navbar");
-
-if (navbar) {
-
-    const TOP_THRESHOLD = 300;
-    const HIDE_THRESHOLD = 150;
-
-    let lastScrollY = window.scrollY;
-
-    /*
-       Le système navbar-top est activé
-       uniquement si la classe existe
-       initialement dans le HTML.
-    */
-    const hasNavbarTop =
-        navbar.classList.contains("navbar-top");
+    /* 
+       Le système navbar-top est activé 
+       uniquement si la classe existe 
+       initialement dans le HTML. 
+    */ 
+    const hasNavbarTop = 
+        navbar.classList.contains("navbar-top"); 
 
 
-    function updateNavbar() {
+    function updateNavbar() { 
 
-        const currentScrollY = window.scrollY;
+        const currentScrollY = window.scrollY; 
 
+        /* ================================================== 
+           CALCUL DU BAS DE PAGE
+        ================================================== */ 
 
-        /* ==================================================
-           NAVBAR-TOP
-        ================================================== */
+        const pageHeight = document.documentElement.scrollHeight;
+        const viewportHeight = window.innerHeight;
 
-        if (hasNavbarTop) {
-
-            navbar.classList.toggle(
-                "navbar-top",
-                currentScrollY < TOP_THRESHOLD
-            );
-
-        }
+        const distanceFromBottom =
+            pageHeight - (currentScrollY + viewportHeight);
 
 
-        /* ==================================================
+        /* ================================================== 
+           NAVBAR-TOP 
+        ================================================== */ 
+
+        if (hasNavbarTop) { 
+
+            navbar.classList.toggle( 
+                "navbar-top", 
+                currentScrollY < TOP_THRESHOLD 
+            ); 
+
+        } 
+
+
+        /* ================================================== 
            NAVBAR HIDE / SHOW
            ACTIVÉ APRÈS 150 PX
-        ================================================== */
+        ================================================== */ 
 
-        if (
-            currentScrollY > lastScrollY &&
-            currentScrollY > HIDE_THRESHOLD
-        ) {
+        if (distanceFromBottom <= BOTTOM_MARGIN) {
 
-            // ↓ Scroll vers le bas
-            navbar.classList.add("navbar-hidden");
-
-        }
-
-        else if (currentScrollY < lastScrollY) {
-
-            // ↑ Scroll vers le haut
+            // ↓ Près du bas de la page → toujours visible
             navbar.classList.remove("navbar-hidden");
 
         }
 
+        else if ( 
+            currentScrollY > lastScrollY && 
+            currentScrollY > HIDE_THRESHOLD 
+        ) { 
 
-        /* ==================================================
-           MÉMOIRE
-        ================================================== */
+            // ↓ Scroll vers le bas
+            navbar.classList.add("navbar-hidden"); 
 
-        lastScrollY = currentScrollY;
-    }
+        } 
 
+        else if (currentScrollY < lastScrollY) { 
 
-    /* ==================================================
-       INITIALISATION
-    ================================================== */
+            // ↑ Scroll vers le haut
+            navbar.classList.remove("navbar-hidden"); 
 
-    updateNavbar();
+        } 
 
 
-    /* ==================================================
-       SCROLL
-    ================================================== */
+        /* ================================================== 
+           MÉMOIRE 
+        ================================================== */ 
 
-    window.addEventListener(
-        "scroll",
-        updateNavbar,
-        { passive: true }
-    );
+        lastScrollY = currentScrollY; 
+    } 
+
+
+    /* ================================================== 
+       INITIALISATION 
+    ================================================== */ 
+
+    updateNavbar(); 
+
+
+    /* ================================================== 
+       SCROLL 
+    ================================================== */ 
+
+    window.addEventListener( 
+        "scroll", 
+        updateNavbar, 
+        { passive: true } 
+    ); 
 
 }
