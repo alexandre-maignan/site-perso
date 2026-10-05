@@ -31,6 +31,7 @@ img {
     padding: 20px 3vw;
 
     overflow: hidden;
+
 }
 
 
@@ -202,34 +203,6 @@ img {
 
 
 
-/* ==================================================
-   INTRO HEADER
-================================================== */
-
-.intro-header {
-    width: 100%;
-
-    margin-top: 50px;
-    padding: 0 3vw;
-}
-
-
-.intro-header .intro-line {
-    width: 100%;
-    height: 1px;
-
-    background: #111;
-}
-
-
-.intro-eyebrow {
-    margin: 14px 0 0;
-
-    font-size: 12px;
-    font-weight: 600;
-
-    color: #111;
-}
 
 
 /* ==================================================
@@ -243,23 +216,30 @@ img {
     display: flex;
     align-items: center;
 
-    padding: 5vw 3vw;
+    margin-top: 80px;
+
+    margin-bottom: 40px;
+
+    padding: 0 3vw;
 
     overflow: hidden;
 }
 
 
 .intro-text {
+    font-family: "Playfair Display", serif;
     width: 100%;
+
+    width:  80vw;
 
     max-width: 800px;
 
-    text-indent: 2rem;
+    text-indent: 3rem;
 
-    font-size: clamp(15px, 5vw, 24px);
-    line-height: 1.4;
-    font-weight: 600;
-
+    font-size: 35px;
+    line-height: 1;
+    text-wrap: pretty;
+    hyphens: auto;
 }
 
 
@@ -368,9 +348,10 @@ img {
 
     min-width: 0;
 
-    font-size: clamp(50px, 7vw, 70px);
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 600;
     line-height: 0.95;
+
 
 }
 
@@ -613,7 +594,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        padding: 30px 3vw;
+        padding: 0 3vw;
 
         overflow: hidden;
     }
@@ -623,7 +604,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        font-size: 1.2rem;
+        font-size: clamp(1.5rem, 2.5vw, 1.5rem);
 
         line-height: 0.95;
     }
@@ -686,7 +667,7 @@ img {
     .gallery-header h2 {
         min-width: 0;
 
-        font-size: clamp(30px, 14vw, 40px);
+        font-size: 30px;
 
         flex-shrink: 1;
     }
