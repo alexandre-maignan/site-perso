@@ -58,7 +58,7 @@ html {
 
 
 :root {
-    --color-primary: #111111;
+    --color-primary: black;
     --color-secondary: #666666;
     --color-muted: #888888;
     --color-border: #dddddd;
