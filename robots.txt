@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow:
 
-Sitemap: https://alexandre-maignan.github.io/portfolio/sitemap.xml
+Sitemap: https://alexandre-maignan.fr/sitemap.xml

@@ -244,8 +244,8 @@
                             XML Sitemap
                         </span>
 
-                        <a href="https://alexandre-maignan.github.io/portfolio/">
-                            alexandre-maignan.github.io
+                        <a href="https://alexandre-maignan.fr/">
+                            alexandre-maignan.fr
                         </a>
 
                     </footer>
