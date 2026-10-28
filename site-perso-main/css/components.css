@@ -1,0 +1,60 @@
+/* =========================
+   BOUTON RETOUR EN HAUT
+========================= */
+
+#back-to-top {
+    position: fixed;
+    bottom:  4vw;
+    right:  2vw;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: black;
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px) scale(1);
+
+    transition:
+        opacity 0.6s cubic-bezier(.55, 0, .1, 1),
+        transform 0.6s cubic-bezier(.55, 0, .1, 1),
+        visibility 0.6s cubic-bezier(.55, 0, .1, 1);
+
+    z-index: 999;
+}
+
+#back-to-top i {
+    font-size: 11px;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+#back-to-top:hover {
+    transform: translateY(0) scale(1.1);
+}
+
+
+
+@media (max-width: 700px) {
+
+    #back-to-top {
+        right: 1.5vw;
+    }
+
+}

@@ -1,0 +1,5 @@
+User-agent: *
+
+Disallow:
+
+Sitemap: https://alexandre-maignan.fr/sitemap.xml
